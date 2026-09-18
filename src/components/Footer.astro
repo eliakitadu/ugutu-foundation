@@ -1,0 +1,83 @@
+---
+import { org, nav } from "../data/site.js";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div>
+      <a href="/" class="brand">
+        <span class="brand__mark">U</span>
+        <span class="brand__text">
+          <strong>{org.shortName}</strong>
+          <small>Community Foundation</small>
+        </span>
+      </a>
+      <p class="footer-tagline">{org.tagline}</p>
+    </div>
+
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </div>
+
+    <div>
+      <h4>Visit us</h4>
+      <address>
+        {org.address.street}<br />
+        {org.address.ward}<br />
+        {org.address.region}<br />
+        {org.address.poBox}
+      </address>
+      <p class="footer-contact">
+        <a href={`mailto:${org.email}`}>{org.email}</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="container site-footer__bar">
+    <p>© {year} {org.name}. {org.registration}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--green-900);
+    color: #cfe7da;
+    padding-top: 3.5rem;
+  }
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  @media (max-width: 760px) {
+    .site-footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  .brand { display: flex; align-items: center; gap: 0.7rem; }
+  .brand__mark {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: var(--gold-500); color: var(--green-900);
+    font-family: var(--font-head); font-weight: 700; font-size: 1.4rem;
+    display: grid; place-items: center;
+  }
+  .brand__text { display: flex; flex-direction: column; line-height: 1.05; }
+  .brand__text strong { color: #fff; font-size: 1.1rem; }
+  .brand__text small { color: #9dc4b1; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; }
+  .footer-tagline { margin-top: 1rem; max-width: 34ch; color: #b8d6c7; }
+  h4 { color: #fff; font-size: 1rem; margin-bottom: 0.9rem; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin-bottom: 0.5rem; }
+  a { color: #cfe7da; }
+  a:hover { color: var(--gold-500); text-decoration: none; }
+  address { font-style: normal; line-height: 1.7; color: #b8d6c7; }
+  .footer-contact { margin-top: 0.8rem; }
+  .site-footer__bar {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-block: 1.5rem;
+  }
+  .site-footer__bar p { margin: 0; font-size: 0.85rem; color: #9dc4b1; }
+</style>

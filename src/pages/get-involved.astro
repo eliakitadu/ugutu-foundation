@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { org } from "../data/site.js";
+---
+
+<BaseLayout title="Get Involved" description="Support UGUTU Community Foundation as a donor, volunteer, or partner.">
+  <section class="section section--tight section--white">
+    <div class="container">
+      <p class="eyebrow">Stand with us</p>
+      <h1 style="max-width: 22ch;">Get involved</h1>
+      <p class="lead">We need your support. There are three ways to join hands with UGUTU Community Foundation.</p>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section class="section section--cream" id="donate">
+    <div class="container split">
+      <div>
+        <div class="card__icon" style="margin-bottom:1rem;"><Icon name="heart" size={30} /></div>
+        <h2>Donate</h2>
+        <p>Your gift goes directly to funding school places, learning materials, and skills programmes for orphans and vulnerable children who cannot afford them.</p>
+        <p><strong>To set up giving, we'll need a donation channel.</strong> Common options for a Tanzanian NGO include mobile money (M-Pesa / Tigo Pesa / Airtel Money), a bank transfer to the foundation's account, or an online platform. Once you confirm which you want, this section becomes a live "Donate" button.</p>
+        <a href="/contact/" class="btn btn--green">Ask how to give</a>
+      </div>
+      <div class="split__media ph"><span>Donation / giving photo</span></div>
+    </div>
+  </section>
+
+  <!-- VOLUNTEER -->
+  <section class="section section--white" id="volunteer">
+    <div class="container split split--reverse">
+      <div class="split__media ph"><span>Volunteers in the field</span></div>
+      <div>
+        <div class="card__icon" style="margin-bottom:1rem;"><Icon name="hands" size={30} /></div>
+        <h2>Volunteer</h2>
+        <p>Come and help on the ground in Arusha. Volunteers support teaching, mentoring, community outreach and our programme activities.</p>
+        <p>Membership is open to anyone aged 18 and above who is ready to support our vision, mission and objectives.</p>
+        <a href="/contact/" class="btn btn--green">Become a volunteer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <section class="section section--cream" id="partner">
+    <div class="container split">
+      <div>
+        <div class="card__icon" style="margin-bottom:1rem;"><Icon name="spark" size={30} /></div>
+        <h2>Partner with us</h2>
+        <p>Organisations, schools, faith groups and companies can partner with UGUTU on grants, projects and long-term community initiatives. Together we can reach more children and families.</p>
+        <a href="/contact/" class="btn btn--green">Start a partnership</a>
+      </div>
+      <div class="split__media ph"><span>Partnership / community photo</span></div>
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="container center">
+      <h2>Ready to help?</h2>
+      <p class="lead mx-auto">Write to us at <a href={`mailto:${org.email}`} style="color:var(--gold-500);">{org.email}</a> or use the contact form.</p>
+      <a href="/contact/" class="btn btn--primary">Contact us</a>
+    </div>
+  </section>
+</BaseLayout>

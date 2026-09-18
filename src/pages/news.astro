@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { news } from "../data/site.js";
+---
+
+<BaseLayout title="News" description="Updates, stories and milestones from UGUTU Community Foundation.">
+  <section class="section section--tight section--white">
+    <div class="container">
+      <p class="eyebrow">Our news</p>
+      <h1>Stories &amp; updates</h1>
+      <p class="lead">Follow our journey — milestones, stories from the children we serve, and news from the field.</p>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      {news.length === 0 ? (
+        <div class="empty">
+          <div class="empty__icon"><Icon name="spark" size={34} /></div>
+          <h2>Our story is just beginning</h2>
+          <p class="lead mx-auto">
+            We haven't posted any updates yet — but there's a lot happening. Soon this page
+            will fill with news from our programs, stories from the children and families we
+            support, and ways you can be part of it.
+          </p>
+          <p class="lead mx-auto">Check back soon, or reach out to say hello.</p>
+          <div class="empty__actions">
+            <a href="/get-involved/" class="btn btn--primary">Get involved</a>
+            <a href="/contact/" class="btn btn--outline">Contact us</a>
+          </div>
+        </div>
+      ) : (
+        <div class="grid grid--3">
+          {news.map((post) => (
+            <article class="card">
+              {post.date && <p class="post-date">{post.date}</p>}
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              {post.href && <a href={post.href} class="btn btn--green">Read more</a>}
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .empty {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: clamp(2rem, 5vw, 3.5rem);
+  }
+  .empty__icon {
+    width: 76px; height: 76px;
+    border-radius: 50%;
+    background: var(--green-50);
+    color: var(--green-700);
+    display: grid; place-items: center;
+    margin: 0 auto 1.25rem;
+  }
+  .empty__actions {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+  .post-date { color: var(--gold-600); font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem; }
+</style>

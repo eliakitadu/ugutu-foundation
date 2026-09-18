@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { org, story, team, fundingSources } from "../data/site.js";
+---
+
+<BaseLayout title="About" description="Who we are — the story, vision, mission and people behind UGUTU Community Foundation.">
+  <!-- PAGE HEADER -->
+  <section class="section section--tight section--white">
+    <div class="container">
+      <p class="eyebrow">About us</p>
+      <h1 style="max-width: 20ch;">Who we are</h1>
+      <p class="lead">{org.registration} {org.areaOfOperation}</p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section section--cream">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Our story</p>
+        <h2>Born from a community's need</h2>
+        <p>{story}</p>
+      </div>
+      <div class="split__media ph"><span>Add a founding / community photo</span></div>
+    </div>
+  </section>
+
+  <!-- VISION + MISSION -->
+  <section class="section section--white">
+    <div class="container grid grid--2">
+      <article class="card">
+        <div class="card__icon"><Icon name="leaf" /></div>
+        <h3>Our vision</h3>
+        <p class="mb-0">{org.vision}</p>
+      </article>
+      <article class="card">
+        <div class="card__icon"><Icon name="spark" /></div>
+        <h3>Our mission</h3>
+        <p class="mb-0">{org.mission}</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="center">
+        <p class="eyebrow">Our people</p>
+        <h2>Leadership &amp; board</h2>
+        <p class="lead mx-auto">The founding members guiding UGUTU Community Foundation.</p>
+      </div>
+      <div class="grid grid--3 mt-2">
+        {team.map((m) => (
+          <article class="card center">
+            <div class="avatar">{m.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</div>
+            <h3 style="margin-bottom:0.2rem;">{m.name}</h3>
+            <p class="mb-0" style="color:var(--gold-600);font-weight:600;">{m.role}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDING / GOVERNANCE -->
+  <section class="section section--white">
+    <div class="container split split--reverse">
+      <div class="split__media ph"><span>Add a photo of an activity or event</span></div>
+      <div>
+        <p class="eyebrow">How we are funded</p>
+        <h2>Transparent and community-rooted</h2>
+        <p>UGUTU is a registered non-governmental organisation, governed by a General Meeting and a Board of Directors, with funds applied solely to advancing our objectives.</p>
+        <div class="mt-2">
+          {fundingSources.map((f) => <span class="pill">{f}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container center">
+      <h2>Want to be part of the story?</h2>
+      <p class="lead mx-auto">Join as a member, volunteer, or supporter and help us reach more children.</p>
+      <a href="/get-involved/" class="btn btn--primary">Get involved</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--green-700);
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.3rem;
+    display: grid; place-items: center;
+    margin: 0 auto 1rem;
+  }
+</style>
