@@ -71,18 +71,21 @@ export const programs = [
 export const involve = [
   {
     title: "Donate",
+    icon: "heart",
     blurb: "Your gift funds school places, learning materials and skills programmes for children who cannot afford them.",
     cta: "Support our work",
     href: "/get-involved/#donate",
   },
   {
     title: "Volunteer",
+    icon: "hands",
     blurb: "Share your time and skills on the ground in Arusha — teaching, mentoring, and supporting our programmes.",
     cta: "Become a volunteer",
     href: "/get-involved/#volunteer",
   },
   {
     title: "Partner",
+    icon: "spark",
     blurb: "Organisations and sponsors can partner with us on grants, projects and long-term community initiatives.",
     cta: "Partner with us",
     href: "/get-involved/#partner",
@@ -107,11 +110,16 @@ export const fundingSources = [
   "Income-generating activities",
 ];
 
+// News / updates. Leave empty for a friendly "coming soon" state.
+// To publish a post, add an object: { title, date, excerpt, href }
+export const news = [];
+
 // Primary navigation.
 export const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about/" },
   { label: "Programs", href: "/programs/" },
   { label: "Get Involved", href: "/get-involved/" },
+  { label: "News", href: "/news/" },
   { label: "Contact", href: "/contact/" },
 ];
