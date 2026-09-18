@@ -1,71 +1,46 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Icon from "../components/Icon.astro";
 import { org } from "../data/site.js";
 ---
 
 <BaseLayout title="Contact" description="Get in touch with UGUTU Community Foundation in Arusha, Tanzania.">
-  <section class="section section--tight section--white">
+  <section class="section section--tight section--paper">
     <div class="container">
-      <p class="eyebrow">Get in touch</p>
-      <h1>Contact us</h1>
+      <p class="kicker">Get in touch</p>
+      <h1>Let's talk</h1>
       <p class="lead">Questions, partnerships, volunteering or giving — we would love to hear from you.</p>
     </div>
   </section>
 
-  <section class="section section--cream">
-    <div class="container split">
+  <section class="section section--white">
+    <div class="container split split--wide-text" style="align-items:start;">
       <!-- Details -->
       <div>
-        <h2>Reach the foundation</h2>
-        <ul class="contact-list">
-          <li>
-            <span class="contact-list__icon"><Icon name="pin" /></span>
-            <div>
-              <strong>Head office</strong><br />
-              {org.address.street}<br />
-              {org.address.ward}<br />
-              {org.address.region}<br />
-              {org.address.poBox}
-            </div>
-          </li>
-          <li>
-            <span class="contact-list__icon"><Icon name="heart" /></span>
-            <div>
-              <strong>Email</strong><br />
-              <a href={`mailto:${org.email}`}>{org.email}</a>
-            </div>
-          </li>
-        </ul>
-        <p style="color:var(--muted);font-size:0.9rem;margin-top:1.5rem;">
-          Note: add a phone number and social media links to complete this section.
-        </p>
+        <p class="kicker">The foundation</p>
+        <h2 style="font-size:1.6rem;">Reach us in Arusha</h2>
+        <dl class="contact-dl">
+          <dt>Head office</dt>
+          <dd>
+            {org.address.street}<br />
+            {org.address.ward}<br />
+            {org.address.region}<br />
+            {org.address.poBox}
+          </dd>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${org.email}`}>{org.email}</a></dd>
+        </dl>
+        <p style="color:var(--muted);font-size:0.9rem;margin-top:1.5rem;">A phone number and social links will go here once confirmed.</p>
       </div>
 
       <!-- Form -->
       <div>
         <form class="contact-form" action="#" method="post">
-          <label>
-            Name
-            <input type="text" name="name" required />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" required />
-          </label>
-          <label>
-            Subject
-            <input type="text" name="subject" />
-          </label>
-          <label>
-            Message
-            <textarea name="message" rows="5" required></textarea>
-          </label>
+          <div class="field"><label for="name">Name</label><input id="name" type="text" name="name" required /></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" name="email" required /></div>
+          <div class="field"><label for="subject">Subject</label><input id="subject" type="text" name="subject" /></div>
+          <div class="field"><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></div>
           <button type="submit" class="btn btn--green">Send message</button>
-          <p class="form-note">
-            This form needs a backend to actually send mail (e.g. Formspree, Netlify Forms,
-            or a small API). Until then, please email us directly.
-          </p>
+          <p class="form-note">This form needs a backend to actually send mail (e.g. Formspree or Netlify Forms). Until then, please email us directly.</p>
         </form>
       </div>
     </div>
@@ -73,25 +48,19 @@ import { org } from "../data/site.js";
 </BaseLayout>
 
 <style>
-  .contact-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
-  .contact-list li { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-  .contact-list__icon {
-    flex: none;
-    width: 46px; height: 46px; border-radius: 10px;
-    background: var(--green-50); color: var(--green-700);
-    display: grid; place-items: center;
-  }
-  .contact-form { background: #fff; padding: 1.75rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--line); }
-  .contact-form label { display: block; font-weight: 600; color: var(--ink); margin-bottom: 1rem; font-size: 0.95rem; }
+  .contact-dl { margin: 1.5rem 0 0; }
+  .contact-dl dt { font-family: var(--font-text); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--clay-ink); margin-top: 1.25rem; }
+  .contact-dl dd { margin: 0.35rem 0 0; line-height: 1.7; color: var(--body); }
+
+  .contact-form { background: var(--paper); padding: clamp(1.35rem, 1rem + 1.5vw, 2rem); border: 1px solid var(--line); border-radius: 6px; }
+  .field { margin-bottom: 1.1rem; }
+  .contact-form label { display: block; font-weight: 600; color: var(--ink); margin-bottom: 0.45rem; font-size: 0.92rem; }
   .contact-form input, .contact-form textarea {
-    width: 100%; margin-top: 0.4rem;
-    padding: 0.7rem 0.9rem;
-    border: 1px solid var(--line); border-radius: 10px;
-    font: inherit; color: var(--ink);
-    background: var(--cream);
+    width: 100%; padding: 0.75rem 0.9rem;
+    border: 1px solid var(--line); border-radius: 4px;
+    font: inherit; color: var(--ink); background: var(--white);
   }
-  .contact-form input:focus, .contact-form textarea:focus {
-    outline: 2px solid var(--green-600); border-color: transparent;
-  }
-  .form-note { font-size: 0.82rem; color: var(--muted); margin-top: 1rem; margin-bottom: 0; }
+  .contact-form textarea { resize: vertical; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(30,77,58,0.12); }
+  .form-note { font-size: 0.82rem; color: var(--muted); margin: 1rem 0 0; }
 </style>

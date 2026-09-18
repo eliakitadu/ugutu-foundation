@@ -1,37 +1,36 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Icon from "../components/Icon.astro";
 import { programs } from "../data/site.js";
 ---
 
 <BaseLayout title="Programs" description="The four core programs of UGUTU Community Foundation: quality education, entrepreneurship, environment conservation, and rights awareness.">
-  <section class="section section--tight section--white">
+  <section class="section section--tight section--paper">
     <div class="container">
-      <p class="eyebrow">What we do</p>
-      <h1 style="max-width: 20ch;">Our programs</h1>
+      <p class="kicker">What we do</p>
+      <h1 style="max-width: 18ch;">Our programs</h1>
       <p class="lead">Four connected areas of work, drawn from the objectives at the heart of our foundation.</p>
     </div>
   </section>
 
   {programs.map((p, i) => (
-    <section class={`section ${i % 2 === 0 ? "section--cream" : "section--white"}`} id={p.slug}>
+    <section class={`section ${i % 2 === 0 ? "section--white" : "section--sand"}`} id={p.slug}>
       <div class={`container split ${i % 2 === 1 ? "split--reverse" : ""}`}>
         <div>
-          <div class="card__icon" style="margin-bottom:1rem;"><Icon name={p.icon} size={30} /></div>
+          <p class="kicker">Program {String(i + 1).padStart(2, "0")}</p>
           <h2>{p.title}</h2>
-          <p class="lead" style="font-size:1.05rem;">{p.summary}</p>
-          <p>{p.body}</p>
+          <p class="lead" style="font-size:1.12rem;">{p.summary}</p>
+          <p class="mb-0">{p.body}</p>
         </div>
-        <div class="split__media ph"><span>Add a photo for “{p.title}”</span></div>
+        <div class={`frame ${i % 2 === 1 ? "frame--sand" : ""}`}><span class="frame__label">A photograph for “{p.title}” belongs here</span></div>
       </div>
     </section>
   ))}
 
   <section class="section section--green">
     <div class="container center">
-      <h2>Help us grow these programs</h2>
-      <p class="lead mx-auto">Your support turns these objectives into real classrooms, skills and futures.</p>
-      <a href="/get-involved/#donate" class="btn btn--primary">Support a program</a>
+      <h2 style="max-width:20ch;margin-inline:auto;">Help us grow these programs</h2>
+      <p class="lead mx-auto" style="margin-bottom:2rem;">Your support turns these objectives into real classrooms, skills and futures.</p>
+      <a href="/get-involved/#donate" class="btn btn--solid">Support a program</a>
     </div>
   </section>
 </BaseLayout>

@@ -1,64 +1,64 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Icon from "../components/Icon.astro";
 import { org } from "../data/site.js";
+const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 ---
 
 <BaseLayout title="Get Involved" description="Support UGUTU Community Foundation as a donor, volunteer, or partner.">
-  <section class="section section--tight section--white">
+  <section class="section section--tight section--paper">
     <div class="container">
-      <p class="eyebrow">Stand with us</p>
-      <h1 style="max-width: 22ch;">Get involved</h1>
+      <p class="kicker">Stand with us</p>
+      <h1 style="max-width: 20ch;">Get involved</h1>
       <p class="lead">We need your support. There are three ways to join hands with UGUTU Community Foundation.</p>
     </div>
   </section>
 
   <!-- DONATE -->
-  <section class="section section--cream" id="donate">
+  <section class="section section--white" id="donate">
     <div class="container split">
       <div>
-        <div class="card__icon" style="margin-bottom:1rem;"><Icon name="heart" size={30} /></div>
+        <p class="kicker">01 — Give</p>
         <h2>Donate</h2>
         <p>Your gift goes directly to funding school places, learning materials, and skills programmes for orphans and vulnerable children who cannot afford them.</p>
-        <p><strong>To set up giving, we'll need a donation channel.</strong> Common options for a Tanzanian NGO include mobile money (M-Pesa / Tigo Pesa / Airtel Money), a bank transfer to the foundation's account, or an online platform. Once you confirm which you want, this section becomes a live "Donate" button.</p>
-        <a href="/contact/" class="btn btn--green">Ask how to give</a>
+        <p>To set up giving, we need a donation channel. Common options for a Tanzanian NGO include mobile money (M-Pesa, Tigo Pesa, Airtel Money), a bank transfer to the foundation's account, or an online platform. Once that's confirmed, this becomes a live donate button.</p>
+        <a href="/contact/" class="arrow mt-1">Ask how to give <Fragment set:html={arrow} /></a>
       </div>
-      <div class="split__media ph"><span>Donation / giving photo</span></div>
+      <div class="frame"><span class="frame__label">A photograph about giving belongs here</span></div>
     </div>
   </section>
 
   <!-- VOLUNTEER -->
-  <section class="section section--white" id="volunteer">
+  <section class="section section--sand" id="volunteer">
     <div class="container split split--reverse">
-      <div class="split__media ph"><span>Volunteers in the field</span></div>
+      <div class="frame frame--sand"><span class="frame__label">A photograph of volunteers belongs here</span></div>
       <div>
-        <div class="card__icon" style="margin-bottom:1rem;"><Icon name="hands" size={30} /></div>
+        <p class="kicker">02 — Give time</p>
         <h2>Volunteer</h2>
         <p>Come and help on the ground in Arusha. Volunteers support teaching, mentoring, community outreach and our programme activities.</p>
         <p>Membership is open to anyone aged 18 and above who is ready to support our vision, mission and objectives.</p>
-        <a href="/contact/" class="btn btn--green">Become a volunteer</a>
+        <a href="/contact/" class="arrow mt-1">Become a volunteer <Fragment set:html={arrow} /></a>
       </div>
     </div>
   </section>
 
   <!-- PARTNER -->
-  <section class="section section--cream" id="partner">
+  <section class="section section--white" id="partner">
     <div class="container split">
       <div>
-        <div class="card__icon" style="margin-bottom:1rem;"><Icon name="spark" size={30} /></div>
+        <p class="kicker">03 — Grow with us</p>
         <h2>Partner with us</h2>
         <p>Organisations, schools, faith groups and companies can partner with UGUTU on grants, projects and long-term community initiatives. Together we can reach more children and families.</p>
-        <a href="/contact/" class="btn btn--green">Start a partnership</a>
+        <a href="/contact/" class="arrow mt-1">Start a partnership <Fragment set:html={arrow} /></a>
       </div>
-      <div class="split__media ph"><span>Partnership / community photo</span></div>
+      <div class="frame"><span class="frame__label">A photograph of a partnership belongs here</span></div>
     </div>
   </section>
 
   <section class="section section--green">
     <div class="container center">
-      <h2>Ready to help?</h2>
-      <p class="lead mx-auto">Write to us at <a href={`mailto:${org.email}`} style="color:var(--gold-500);">{org.email}</a> or use the contact form.</p>
-      <a href="/contact/" class="btn btn--primary">Contact us</a>
+      <h2 style="max-width:16ch;margin-inline:auto;">Ready to help?</h2>
+      <p class="lead mx-auto" style="margin-bottom:2rem;">Write to us at <a href={`mailto:${org.email}`} style="color:var(--gold);border-bottom:1px solid var(--gold);">{org.email}</a> or use the contact form.</p>
+      <a href="/contact/" class="btn btn--solid">Contact us</a>
     </div>
   </section>
 </BaseLayout>
