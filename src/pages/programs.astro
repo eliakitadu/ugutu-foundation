@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Figure from "../components/Figure.astro";
 import { programs } from "../data/site.js";
 ---
 
@@ -21,7 +22,7 @@ import { programs } from "../data/site.js";
           <p class="lead" style="font-size:1.12rem;">{p.summary}</p>
           <p class="mb-0">{p.body}</p>
         </div>
-        <div class={`frame ${i % 2 === 1 ? "frame--sand" : ""}`}><span class="frame__label">A photograph for “{p.title}” belongs here</span></div>
+        <Figure src="" label={`A photograph for “${p.title}” belongs here`} alt={p.title} variant={i % 2 === 1 ? "frame--sand" : ""} />
       </div>
     </section>
   ))}

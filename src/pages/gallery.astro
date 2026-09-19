@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { gallery } from "../data/site.js";
+const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+---
+
+<BaseLayout title="Gallery" description="Photographs from UGUTU Community Foundation — our schools, children and community in Arusha and Simanjiro.">
+  <section class="section section--tight section--paper">
+    <div class="container">
+      <p class="kicker">Gallery</p>
+      <h1>Moments from our schools</h1>
+      <p class="lead">Photographs from our schools, the children we support, and the communities we serve in Usa River and Simanjiro.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      {gallery.length === 0 ? (
+        <div class="empty split split--wide-text">
+          <div>
+            <p class="kicker">Coming soon</p>
+            <h2 style="max-width:16ch;">Photographs on their way</h2>
+            <p class="lead">We're gathering good photos of our schools, children and community. This gallery will fill up soon — check back, or follow us on Instagram in the meantime.</p>
+            <div class="actions mt-1">
+              <a href="https://instagram.com/jowindaycare" target="_blank" rel="noopener" class="btn btn--solid">Follow @jowindaycare</a>
+              <a href="/get-involved/" class="arrow">Get involved <Fragment set:html={arrow} /></a>
+            </div>
+          </div>
+          <div class="frame frame--sand frame--tall"><span class="frame__label">The first photographs will appear here</span></div>
+        </div>
+      ) : (
+        <div class="gallery-grid">
+          {gallery.map((g) => (
+            <figure class="gallery-item">
+              <img src={g.src} alt={g.alt || ""} loading="lazy" decoding="async" />
+              {g.caption && <figcaption>{g.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .empty { align-items: center; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.6rem, 0.3rem + 1vw, 1rem);
+  }
+  @media (max-width: 780px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .gallery-grid { grid-template-columns: 1fr; } }
+  .gallery-item { margin: 0; }
+  .gallery-item img {
+    width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+    border-radius: 6px; box-shadow: var(--shadow-sm); display: block;
+  }
+  .gallery-item figcaption { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; font-style: italic; }
+</style>

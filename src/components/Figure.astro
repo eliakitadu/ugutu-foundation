@@ -1,0 +1,23 @@
+---
+// Drop-in image slot.
+// If `src` is set, renders the photo; otherwise a styled placeholder with `label`.
+// Usage: <Figure src={images.hero} alt="..." label="A hero photo belongs here" tall />
+const { src = "", alt = "", label = "Photograph", variant = "", tall = false, caption = "" } = Astro.props;
+const frameCls = ["frame", variant, tall ? "frame--tall" : ""].filter(Boolean).join(" ");
+const imgCls = ["figure-img", tall ? "figure-img--tall" : ""].filter(Boolean).join(" ");
+---
+{src ? (
+  <figure class="figure">
+    <img src={src} alt={alt} class={imgCls} loading="lazy" decoding="async" />
+    {caption && <figcaption class="caption">{caption}</figcaption>}
+  </figure>
+) : (
+  <figure class="figure">
+    <div class={frameCls}><span class="frame__label">{label}</span></div>
+    {caption && <figcaption class="caption">{caption}</figcaption>}
+  </figure>
+)}
+
+<style>
+  .figure { margin: 0; }
+</style>

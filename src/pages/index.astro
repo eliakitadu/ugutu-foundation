@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { org, programs, involve, story } from "../data/site.js";
+import Figure from "../components/Figure.astro";
+import { org, programs, involve, story, schools, appeal, images } from "../data/site.js";
 const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 ---
 
@@ -9,7 +10,7 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
   <section class="section section--tight hero">
     <div class="container split split--wide-text">
       <div>
-        <p class="kicker">Arusha · Tanzania</p>
+        <p class="kicker">Arusha &amp; Simanjiro · Tanzania</p>
         <h1>Every child deserves the <em>chance</em> to learn.</h1>
         <p class="lead">{org.tagline}</p>
         <div class="actions mt-2">
@@ -17,10 +18,9 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
           <a href="/about/" class="arrow">Our story <Fragment set:html={arrow} /></a>
         </div>
       </div>
-      <div>
-        <div class="frame frame--tall"><span class="frame__label">A photograph of the children at school belongs here</span></div>
-        <p class="caption">Usa River, Arumeru District — where UGUTU works.</p>
-      </div>
+      <Figure src={images.hero} tall label="A hero photo of the children / school belongs here"
+        alt="Children at a UGUTU Community Foundation school"
+        caption="Simanjiro, Manyara — where most of our work happens." />
     </div>
   </section>
 
@@ -35,8 +35,56 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
     </div>
   </section>
 
-  <!-- PROGRAMS as numbered editorial list -->
+  <!-- OUR SCHOOLS -->
   <section class="section section--paper">
+    <div class="container">
+      <div class="split split--wide-text" style="align-items:end;">
+        <div>
+          <p class="kicker">Our schools</p>
+          <h2 class="mb-0">Two schools, one mission</h2>
+        </div>
+        <p class="mb-0" style="color:var(--muted);">From the first years of learning in Usa River to a growing school in the Maasai community of Simanjiro.</p>
+      </div>
+
+      <div class="grid grid--2 mt-2">
+        {schools.map((s) => (
+          <article class="school-card">
+            <Figure src={s.image} label={`A photo of ${s.name} belongs here`} alt={s.name}
+              variant={s.lead ? "" : "frame--sand"} />
+            <div class="school-card__body">
+              <p class="kicker" style="margin-bottom:0.6rem;">{s.tag}</p>
+              <h3>{s.name}</h3>
+              <p class="school-card__loc">{s.location}</p>
+              <p>{s.summary}</p>
+              <a href={`/schools/#${s.slug}`} class="arrow">Learn more <Fragment set:html={arrow} /></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMANJIRO APPEAL -->
+  <section class="section section--green">
+    <div class="container">
+      <p class="kicker">This year's goal</p>
+      <div class="split split--wide-text" style="align-items:start;">
+        <h2 style="max-width:14ch;">{appeal.title}</h2>
+        <div>
+          <p class="lead">{appeal.body}</p>
+          <ul class="needs">
+            {appeal.items.map((it) => (
+              <li><strong>{it.label}</strong><span>{it.note}</span></li>
+            ))}
+          </ul>
+          <a href="/get-involved/#donate" class="btn btn--solid mt-1">Support the Simanjiro school</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="section section--white">
     <div class="container">
       <div class="split split--wide-text" style="align-items:end;">
         <div>
@@ -45,7 +93,6 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
         </div>
         <p class="mb-0" style="color:var(--muted);">Drawn from the objectives at the heart of our foundation — education first, and the community around it.</p>
       </div>
-
       <div class="numlist">
         {programs.map((p, i) => (
           <article class="numitem">
@@ -57,49 +104,35 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
           </article>
         ))}
       </div>
-
       <div class="mt-2"><a href="/programs/" class="arrow">Read about each program <Fragment set:html={arrow} /></a></div>
     </div>
   </section>
 
   <!-- WHO WE SERVE -->
-  <section class="section section--white">
+  <section class="section section--sand">
     <div class="container split">
-      <div class="frame"><span class="frame__label">A photograph from the field belongs here</span></div>
+      <Figure src={images.serve} label="A photograph from the field belongs here"
+        alt="A child supported by UGUTU Community Foundation" variant="frame--sand" />
       <div>
         <p class="kicker">The children we serve</p>
         <h2>For the vulnerable, voiceless and underprivileged</h2>
-        <p>We work for the women, youth and children too often left behind — orphans and vulnerable children whose families cannot afford the cost of school.</p>
-        <p>By keeping children learning and equipping their communities with real skills, we break the cycle that pushes them toward child labour and drugs.</p>
+        <p>We work for the women, youth and children too often left behind — orphans and vulnerable children whose families cannot afford the cost of school, and girls at risk of leaving education far too early.</p>
+        <p>By keeping children learning and equipping their communities with real skills, we break the cycle that pushes them toward child labour, early marriage and drugs.</p>
         <a href="/about/" class="arrow mt-1">More about UGUTU <Fragment set:html={arrow} /></a>
       </div>
     </div>
   </section>
 
-  <!-- STATS -->
-  <section class="section section--green">
-    <div class="container">
-      <p class="kicker">At a glance</p>
-      <h2 style="max-width:16ch;">Rooted in Arusha, working across Tanzania</h2>
-      <div class="stats">
-        <div class="stat"><div class="stat__num">4</div><div class="stat__label">Core programs</div></div>
-        <div class="stat"><div class="stat__num">National</div><div class="stat__label">Area of operation</div></div>
-        <div class="stat"><div class="stat__num">2002</div><div class="stat__label">NGO Act registration</div></div>
-      </div>
-    </div>
-  </section>
-
   <!-- GET INVOLVED -->
-  <section class="section section--sand">
+  <section class="section section--white">
     <div class="container">
       <div class="split split--wide-text" style="align-items:end;">
         <div>
           <p class="kicker">Get involved</p>
           <h2 class="mb-0">Stand with us</h2>
         </div>
-        <p class="mb-0" style="color:var(--muted);">Three ways to help make education reachable — give, give time, or grow with us.</p>
+        <p class="mb-0" style="color:var(--muted);">Give funds, give goods, give time, or grow with us — every kind of help reaches a child.</p>
       </div>
-
       <div class="features">
         {involve.map((it, i) => (
           <article class="feature">
@@ -129,4 +162,15 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
 <style>
   .hero { padding-top: clamp(2rem, 1rem + 3vw, 4rem); }
   .hero h1 { margin-bottom: 0.5rem; }
+
+  .school-card { display: flex; flex-direction: column; gap: 1.1rem; }
+  .school-card__body { display: flex; flex-direction: column; }
+  .school-card__loc { color: var(--clay-ink); font-weight: 600; font-size: 0.9rem; margin: 0 0 0.6rem; }
+  .school-card .arrow { align-self: flex-start; margin-top: 0.3rem; }
+
+  .needs { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1rem; }
+  .needs li { display: grid; gap: 0.15rem; padding-left: 1.1rem; position: relative; }
+  .needs li::before { content: ""; position: absolute; left: 0; top: 0.6rem; width: 7px; height: 7px; background: var(--gold); border-radius: 50%; }
+  .needs strong { color: #fffdf8; font-weight: 600; }
+  .needs span { color: #b9cabf; font-size: 0.95rem; }
 </style>

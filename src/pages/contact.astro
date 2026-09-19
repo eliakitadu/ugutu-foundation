@@ -28,6 +28,12 @@ import { org } from "../data/site.js";
           </dd>
           <dt>Email</dt>
           <dd><a href={`mailto:${org.email}`}>{org.email}</a></dd>
+          {org.social.instagram && (
+            <>
+              <dt>Instagram</dt>
+              <dd><a href={`https://instagram.com/${org.social.instagram}`} target="_blank" rel="noopener">@{org.social.instagram}</a></dd>
+            </>
+          )}
         </dl>
         <p style="color:var(--muted);font-size:0.9rem;margin-top:1.5rem;">A phone number and social links will go here once confirmed.</p>
       </div>

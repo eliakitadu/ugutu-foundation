@@ -204,6 +204,17 @@ header, main, footer { position: relative; z-index: 2; }
 /* caption under a frame */
 .caption { font-size: 0.82rem; color: var(--muted); margin-top: 0.7rem; font-style: italic; }
 
+/* real images dropped into figure slots */
+.figure-img {
+  width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-sm);
+  display: block;
+}
+.figure-img--tall { aspect-ratio: 3 / 4; }
+
 /* ---------- Numbered editorial list (programs) ---------- */
 .numlist { border-top: 1px solid var(--line); margin-top: 2.5rem; }
 .numitem {
@@ -233,7 +244,7 @@ header, main, footer { position: relative; z-index: 2; }
 }
 
 /* ---------- Feature blocks (get involved / how to help) ---------- */
-.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 2.5rem; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0; margin-top: 2.5rem; }
 .feature {
   padding: clamp(1.5rem, 1rem + 1.5vw, 2.2rem);
   border: 1px solid var(--line);

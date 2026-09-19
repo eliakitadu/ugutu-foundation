@@ -7,7 +7,9 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <p class="footer-word">{org.shortName}</p>
+        {org.logo
+          ? <img src={org.logo} alt={org.name} class="footer-logo" />
+          : <p class="footer-word">{org.shortName}</p>}
         <p class="footer-tagline">{org.tagline}</p>
         <a href="/get-involved/#donate" class="btn btn--solid mt-1">Support our work</a>
       </div>
@@ -26,6 +28,11 @@ const year = new Date().getFullYear();
             {org.address.poBox}
           </address>
           <p class="footer-email"><a href={`mailto:${org.email}`}>{org.email}</a></p>
+          {org.social.instagram && (
+            <p class="footer-social">
+              <a href={`https://instagram.com/${org.social.instagram}`} target="_blank" rel="noopener">Instagram · @{org.social.instagram}</a>
+            </p>
+          )}
         </div>
       </div>
     </div>
@@ -44,6 +51,8 @@ const year = new Date().getFullYear();
   @media (max-width: 780px) { .footer-top { grid-template-columns: 1fr; gap: 2.5rem; } }
 
   .footer-word { font-family: var(--font-display); font-size: 2.6rem; color: #fffdf8; margin: 0 0 0.6rem; letter-spacing: 0.02em; }
+  .footer-logo { height: 60px; width: auto; margin-bottom: 0.8rem; }
+  .footer-social { margin-top: 0.5rem; }
   .footer-tagline { color: #c3d4c9; max-width: 34ch; margin: 0 0 0.5rem; }
 
   .footer-cols { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; }

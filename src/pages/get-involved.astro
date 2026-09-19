@@ -1,15 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Figure from "../components/Figure.astro";
 import { org } from "../data/site.js";
 const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 ---
 
-<BaseLayout title="Get Involved" description="Support UGUTU Community Foundation as a donor, volunteer, or partner.">
+<BaseLayout title="Get Involved" description="Support UGUTU Community Foundation — donate funds or goods, volunteer, or partner with us.">
   <section class="section section--tight section--paper">
     <div class="container">
       <p class="kicker">Stand with us</p>
       <h1 style="max-width: 20ch;">Get involved</h1>
-      <p class="lead">We need your support. There are three ways to join hands with UGUTU Community Foundation.</p>
+      <p class="lead">We need your support. There are several ways to join hands with UGUTU Community Foundation — give funds, give goods, give time, or partner with us.</p>
     </div>
   </section>
 
@@ -17,40 +18,54 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
   <section class="section section--white" id="donate">
     <div class="container split">
       <div>
-        <p class="kicker">01 — Give</p>
+        <p class="kicker">01 — Give funds</p>
         <h2>Donate</h2>
-        <p>Your gift goes directly to funding school places, learning materials, and skills programmes for orphans and vulnerable children who cannot afford them.</p>
-        <p>To set up giving, we need a donation channel. Common options for a Tanzanian NGO include mobile money (M-Pesa, Tigo Pesa, Airtel Money), a bank transfer to the foundation's account, or an online platform. Once that's confirmed, this becomes a live donate button.</p>
+        <p>Your gift goes straight into the things children need most — classrooms and dormitories at our Simanjiro school, and school places for orphans and vulnerable children who cannot afford them.</p>
+        <p>We're finalising our giving channels. For a Tanzanian NGO these usually include mobile money (M-Pesa, Tigo Pesa, Airtel Money) and a bank transfer to the foundation's account. Once confirmed, the details and a live donate button will appear here.</p>
         <a href="/contact/" class="arrow mt-1">Ask how to give <Fragment set:html={arrow} /></a>
       </div>
-      <div class="frame"><span class="frame__label">A photograph about giving belongs here</span></div>
+      <Figure src="" label="A photograph about giving belongs here" alt="Supporting a child's education" />
+    </div>
+  </section>
+
+  <!-- GIVE GOODS -->
+  <section class="section section--sand" id="goods">
+    <div class="container split split--reverse">
+      <Figure src="" label="A photograph of uniforms / supplies belongs here" alt="School supplies donated to children" variant="frame--sand" />
+      <div>
+        <p class="kicker">02 — Give goods</p>
+        <h2>Donate uniforms, stationery &amp; shoes</h2>
+        <p>Not every gift is money. School uniforms, stationery, shoes and learning materials are exactly the everyday basics that keep a child in class — and they make an immediate difference.</p>
+        <p>If you or your organisation can donate goods, we'll tell you what's needed most right now and how to get them to the children.</p>
+        <a href="/contact/" class="arrow mt-1">Donate goods <Fragment set:html={arrow} /></a>
+      </div>
     </div>
   </section>
 
   <!-- VOLUNTEER -->
-  <section class="section section--sand" id="volunteer">
-    <div class="container split split--reverse">
-      <div class="frame frame--sand"><span class="frame__label">A photograph of volunteers belongs here</span></div>
+  <section class="section section--white" id="volunteer">
+    <div class="container split">
       <div>
-        <p class="kicker">02 — Give time</p>
+        <p class="kicker">03 — Give time</p>
         <h2>Volunteer</h2>
-        <p>Come and help on the ground in Arusha. Volunteers support teaching, mentoring, community outreach and our programme activities.</p>
+        <p>Visitors are warmly welcome to give their time on the ground with us. Volunteers support teaching, mentoring, community outreach and the day-to-day life of our schools in Usa River and Simanjiro.</p>
         <p>Membership is open to anyone aged 18 and above who is ready to support our vision, mission and objectives.</p>
         <a href="/contact/" class="arrow mt-1">Become a volunteer <Fragment set:html={arrow} /></a>
       </div>
+      <Figure src="" label="A photograph of volunteers belongs here" alt="Volunteers with UGUTU Community Foundation" />
     </div>
   </section>
 
   <!-- PARTNER -->
-  <section class="section section--white" id="partner">
-    <div class="container split">
+  <section class="section section--sand" id="partner">
+    <div class="container split split--reverse">
+      <Figure src="" label="A photograph of a partnership belongs here" alt="A UGUTU partnership" variant="frame--sand" />
       <div>
-        <p class="kicker">03 — Grow with us</p>
+        <p class="kicker">04 — Grow with us</p>
         <h2>Partner with us</h2>
-        <p>Organisations, schools, faith groups and companies can partner with UGUTU on grants, projects and long-term community initiatives. Together we can reach more children and families.</p>
+        <p>Organisations, schools, faith groups and companies can partner with UGUTU on grants, construction, sponsorship and long-term community projects — especially the development of our Simanjiro school. Together we can reach more children and families.</p>
         <a href="/contact/" class="arrow mt-1">Start a partnership <Fragment set:html={arrow} /></a>
       </div>
-      <div class="frame"><span class="frame__label">A photograph of a partnership belongs here</span></div>
     </div>
   </section>
 
