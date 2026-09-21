@@ -27,8 +27,8 @@ export const org = {
 
 // Phone contacts.
 export const contacts = [
-  { name: "Joel Vomo", role: "Chairperson", phone: "0754 882 111", tel: "+255754882111" },
-  { name: "Winifrida Massawe", role: "Executive Secretary", phone: "0767 358 800", tel: "+255767358800" },
+  { name: "Joel Vomo", role: "Chairperson", phone: "+255-754-882-111", tel: "+255754882111" },
+  { name: "Winifrida Massawe", role: "Executive SECRETARY", phone: "+255-767-358-800", tel: "+255767358800" },
 ];
 
 // Bank account for donations (KCB Bank Tanzania).
