@@ -33,7 +33,7 @@ const ordered = [...schools].sort((a, b) => (b.lead ? 1 : 0) - (a.lead ? 1 : 0))
           {s.lead && <a href="/get-involved/#donate" class="btn btn--solid mt-2">Support this school</a>}
         </div>
         <Figure src={s.image} label={`A photo of ${s.name} belongs here`} alt={s.name}
-          variant={i % 2 === 1 ? "frame--sand" : ""} tall={s.lead} />
+          variant={i % 2 === 1 ? "frame--sand" : ""} />
       </div>
     </section>
   ))}

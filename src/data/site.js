@@ -47,12 +47,12 @@ export const scope = "UGUTU Community Foundation works across Tanzania for the s
 
 // Image slots — drop a file in public/images/ and set the path here.
 export const images = {
-  hero: "/images/web/hero.jpg",
+  hero: "/images/web/gallery/IMG_8212.jpg",   // children at the JOWIN Daycare signboard
   story: "/images/web/story.jpg",
-  serve: "/images/web/serve.jpg",
+  serve: "/images/web/gallery/IMG_1143.jpg",  // a pupil learning with a tablet
   funding: "/images/web/community.jpg",
   volunteer: "/images/web/volunteer.jpg",
-  goods: "/images/web/serve.jpg",
+  goods: "/images/web/gallery/IMG_2333.jpg",  // donated uniforms, shoes & stationery
   partner: "/images/web/story.jpg",
   profile: "/images/web/community.jpg",
 };
@@ -68,7 +68,7 @@ export const schools = [
     location: "Simanjiro, Manyara Region",
     tag: "Our main project",
     lead: true,
-    image: "/images/web/simanjiro.jpg",
+    image: "/images/web/gallery/IMG_5836.jpg",
     summary: "Our growing school in the Maasai community of Simanjiro — and the focus of our work this year.",
     body: "Simanjiro is where most of our effort now goes. We have land to grow, and a community that increasingly wants education for its children. Our goal this year is to raise funds to build classrooms and dormitories so more children can learn — and board — safely, and to sponsor children whose families cannot meet the cost of school.",
     needs: ["Classroom construction", "Dormitory construction", "Child sponsorship", "Uniforms, stationery & shoes"],
@@ -137,19 +137,19 @@ export const activities = [
   {
     title: "Growing the school in Simanjiro",
     location: "Simanjiro, Manyara",
-    image: "/images/web/simanjiro.jpg",
+    image: "/images/web/gallery/IMG_5839.jpg",
     text: "Developing classrooms and boarding for children in the Maasai community, so more can learn close to home.",
   },
   {
     title: "Sponsoring vulnerable children",
     location: "Across our schools",
-    image: "/images/web/serve.jpg",
+    image: "/images/web/gallery/20260114_091049.jpg",
     text: "Covering fees, uniforms and materials for orphans and vulnerable children who could not otherwise attend school.",
   },
   {
     title: "Volunteers on the ground",
     location: "Arusha & Simanjiro",
-    image: "/images/web/volunteer.jpg",
+    image: "/images/web/gallery/IMG_0899.jpg",
     text: "Visitors join our teachers to support teaching, mentoring and the daily life of our schools.",
   },
 ];
@@ -191,15 +191,23 @@ export const objectives = [
   "Raise awareness of the rights of children and women",
 ];
 
-// Gallery images.
+// Gallery images (curated).
+const G = "/images/web/gallery";
 export const gallery = [
-  { src: "/images/web/serve.jpg", alt: "Children at their desks in class", caption: "In the classroom" },
-  { src: "/images/web/jowin.jpg", alt: "A classroom at JOWIN Daycare", caption: "JOWIN Daycare, Usa River" },
-  { src: "/images/web/simanjiro.jpg", alt: "Pupils at UGUTU Pre & Primary School", caption: "UGUTU Pre & Primary, Simanjiro" },
-  { src: "/images/web/volunteer.jpg", alt: "A volunteer with pupils outside the school", caption: "Volunteers with our pupils" },
+  { src: `${G}/IMG_8212.jpg`, alt: "Children outside the JOWIN Daycare signboard", caption: "At JOWIN Daycare, Usa River" },
+  { src: `${G}/IMG_0899.jpg`, alt: "Two smiling pupils with a volunteer", caption: "Joy in every day" },
+  { src: `${G}/20260114_091049.jpg`, alt: "Pupils in blue uniform at the chalkboard", caption: "Ready to learn" },
+  { src: `${G}/IMG_5836.jpg`, alt: "Children learning outdoors in Simanjiro", caption: "Outdoor learning, Simanjiro" },
+  { src: `${G}/IMG_5839.jpg`, alt: "A volunteer teaching children in Simanjiro", caption: "Lessons in the Maasai community" },
+  { src: `${G}/IMG_1141.jpg`, alt: "Children learning with tablets in class", caption: "Learning with tablets" },
+  { src: `${G}/IMG_1143.jpg`, alt: "A pupil smiling with a learning tablet", caption: "In class" },
+  { src: `${G}/IMG_2333.jpg`, alt: "Donated uniforms, shoes and stationery", caption: "Uniforms, shoes & supplies" },
+  { src: `${G}/IMG_2345.jpg`, alt: "New backpacks for pupils", caption: "New backpacks" },
+  { src: `${G}/IMG_2330.jpg`, alt: "Donated school shoes", caption: "School shoes" },
+  { src: `${G}/IMG_8533.jpg`, alt: "A joyful moment with a pupil", caption: "Smiles all round" },
+  { src: "/images/web/jowin.jpg", alt: "A classroom at JOWIN Daycare", caption: "In the classroom" },
+  { src: "/images/web/story.jpg", alt: "Group at a mural reading 'a place where love grows for learning'", caption: "A place where love grows for learning" },
   { src: "/images/web/community.jpg", alt: "Volunteers and children together", caption: "Together" },
-  { src: "/images/web/story.jpg", alt: "Group at a 'place where love grows for learning' mural", caption: "A place where love grows for learning" },
-  { src: "/images/web/hero.jpg", alt: "Children learning in the classroom", caption: "Learning" },
 ];
 
 // Primary navigation.
