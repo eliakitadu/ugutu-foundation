@@ -7,9 +7,7 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        {org.logo
-          ? <img src={org.logo} alt={org.name} class="footer-logo" />
-          : <p class="footer-word">{org.shortName}</p>}
+        <p class="footer-word">{org.shortName}</p>
         <p class="footer-tagline">{org.tagline}</p>
         <a href="/get-involved/#donate" class="btn btn--solid mt-1">Support our work</a>
       </div>
@@ -17,7 +15,10 @@ const year = new Date().getFullYear();
       <div class="footer-cols">
         <div>
           <h4>Explore</h4>
-          <ul>{nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
+          <ul>
+            {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+            <li><a href="/profile/">Organization Profile</a></li>
+          </ul>
         </div>
         <div>
           <h4>Visit</h4>

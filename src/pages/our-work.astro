@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Figure from "../components/Figure.astro";
+import { programs, activities, testimonials } from "../data/site.js";
+const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+---
+
+<BaseLayout title="Our Work" description="The programs and project activities of UGUTU Community Foundation — education, livelihoods, environment and rights, for children, youth, women and families across Tanzania.">
+  <section class="section section--tight section--paper">
+    <div class="container">
+      <p class="kicker">What we do</p>
+      <h1 style="max-width: 16ch;">Our work</h1>
+      <p class="lead">Education is our foundation — but our work reaches whole communities: children, youth, women and families across Tanzania.</p>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="section section--white">
+    <div class="container">
+      <p class="kicker">Our programs</p>
+      <h2 style="max-width:20ch;">Four connected areas of work</h2>
+      <div class="prog-grid">
+        {programs.map((p, i) => (
+          <article class="prog" id={p.slug}>
+            <div class="prog__no">{String(i + 1).padStart(2, "0")}</div>
+            <h3>{p.title}</h3>
+            <p class="prog__sum">{p.summary}</p>
+            <p class="prog__body">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES / IN ACTION -->
+  <section class="section section--sand">
+    <div class="container">
+      <div class="split split--wide-text" style="align-items:end;">
+        <div>
+          <p class="kicker">In action</p>
+          <h2 class="mb-0">Project activities</h2>
+        </div>
+        <p class="mb-0" style="color:var(--muted);">A look at what your support makes possible, day to day, across our schools and community.</p>
+      </div>
+
+      <div class="activity-grid">
+        {activities.map((a) => (
+          <article class="activity">
+            <Figure src={a.image} label={`Photo: ${a.title}`} alt={a.title} />
+            <div class="activity__body">
+              <p class="activity__loc">{a.location}</p>
+              <h3>{a.title}</h3>
+              <p class="mb-0">{a.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section--white">
+    <div class="container">
+      <p class="kicker">Voices</p>
+      <h2 style="max-width:18ch;">Stories from our community</h2>
+      {testimonials.length === 0 ? (
+        <div class="tstm-empty">
+          <p class="lead mb-0">As families, pupils, volunteers and partners share their experiences, their words will appear here. Have a story to tell? <a href="/contact/">We'd love to hear it.</a></p>
+        </div>
+      ) : (
+        <div class="tstm-grid">
+          {testimonials.map((t) => (
+            <figure class="tstm">
+              <blockquote>“{t.quote}”</blockquote>
+              <figcaption>
+                {t.image && <img src={t.image} alt={t.name} class="tstm__img" loading="lazy" />}
+                <span><strong>{t.name}</strong>{t.role && <em>{t.role}</em>}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="container center">
+      <h2 style="max-width:20ch;margin-inline:auto;">Be part of the work</h2>
+      <p class="lead mx-auto" style="margin-bottom:2rem;">Give, volunteer, or partner with us to reach more children and families.</p>
+      <div class="actions" style="justify-content:center;">
+        <a href="/get-involved/#donate" class="btn btn--solid">Donate now</a>
+        <a href="/get-involved/" class="btn btn--ghost">Get involved</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin-top: 2.5rem; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .prog { padding: clamp(1.4rem, 1rem + 1.5vw, 2.2rem); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .prog__no { font-family: var(--font-display); color: var(--clay); font-size: 1.4rem; margin-bottom: 0.6rem; }
+  .prog__sum { font-weight: 500; color: var(--ink); }
+  .prog__body { color: var(--body); margin-bottom: 0; }
+  @media (max-width: 700px) { .prog-grid { grid-template-columns: 1fr; } }
+
+  .activity-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.25rem, 0.8rem + 2vw, 2rem); margin-top: 2.5rem; }
+  @media (max-width: 760px) { .activity-grid { grid-template-columns: 1fr; } }
+  .activity { display: flex; flex-direction: column; gap: 1rem; }
+  .activity__loc { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--clay-ink); margin: 0 0 0.3rem; }
+  .activity__body h3 { margin-bottom: 0.4rem; }
+
+  .tstm-empty {
+    margin-top: 1.5rem; padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border: 1px dashed var(--line); border-radius: 8px; background: var(--paper);
+    max-width: 70ch;
+  }
+  .tstm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+  @media (max-width: 700px) { .tstm-grid { grid-template-columns: 1fr; } }
+  .tstm { margin: 0; padding: 1.75rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+  .tstm blockquote { margin: 0 0 1.1rem; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.4; color: var(--ink); }
+  .tstm figcaption { display: flex; align-items: center; gap: 0.8rem; }
+  .tstm__img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+  .tstm figcaption strong { display: block; color: var(--ink); }
+  .tstm figcaption em { color: var(--muted); font-style: normal; font-size: 0.88rem; }
+</style>

@@ -11,3 +11,9 @@ node_modules/
 .DS_Store
 # logs
 npm-debug.log*
+# unoptimised source images at public/images/ root (use public/images/web/ instead)
+public/images/*.HEIC
+public/images/*.heic
+public/images/*.jpg
+public/images/*.jpeg
+public/images/*.png

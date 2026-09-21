@@ -1,14 +1,14 @@
 // Central content for UGUTU Community Foundation.
-// Everything the site displays lives here so content can be edited without touching markup.
-// Image paths left as "" fall back to a styled placeholder until a real file is added.
+// Edit text and image paths here; every page updates. Image paths of "" show a placeholder.
 
 export const org = {
   name: "UGUTU Community Foundation",
   shortName: "UGUTU",
-  logo: "", // set to "/images/logo.png" once the logo file is added to public/images/
+  logo: "/images/web/logo.png",       // full logo (transparent)
+  logoMark: "/images/web/logo-mark.png", // emblem only (header / favicon)
   tagline: "Helping deprived Tanzanian children realise their full potential through education.",
   registration: "Registered NGO under the Non-Governmental Organizations Act, No. 24 of 2002, United Republic of Tanzania.",
-  areaOfOperation: "Based in Arusha and Manyara Regions, and registered to work nationwide across Tanzania.",
+  areaOfOperation: "A national organisation working across Tanzania, headquartered in Arusha.",
   vision: "Helping deprived Tanzanian children realise their full potential through education.",
   mission: "Providing quality services to the community through quality education.",
   email: "info@ugutufoundation.org", // TODO: not wired to a mailbox yet
@@ -19,16 +19,16 @@ export const org = {
     poBox: "P.O. Box 6075",
   },
   social: {
-    instagram: "jowindaycare", // handle only, no @  (TODO: dedicated org account later)
-    facebook: "", // TODO
-    youtube: "", // TODO
+    instagram: "jowindaycare",
+    facebook: "",
+    youtube: "",
   },
 };
 
 // Phone contacts.
 export const contacts = [
-  { name: "Joel Vomo", role: "Chairperson", phone: "+255-754-882-111", tel: "+255754882111" },
-  { name: "Winifrida Massawe", role: "Executive SECRETARY", phone: "+255-767-358-800", tel: "+255767358800" },
+  { name: "Joel Vomo", role: "Chairperson", phone: "0754 882 111", tel: "+255754882111" },
+  { name: "Winifrida Massawe", role: "Executive Secretary", phone: "0767 358 800", tel: "+255767358800" },
 ];
 
 // Bank account for donations (KCB Bank Tanzania).
@@ -38,22 +38,26 @@ export const bank = {
   accountName: "UGUTU COMMUNITY",
   accountNumber: "3391643595",
   currency: "TZS",
-  swift: "KCBLTZTZ", // for international transfers
+  swift: "KCBLTZTZ",
   bankAddress: "Ali Hassan Mwinyi / Kaunda Drive Junction, P.O. Box 804, Dar es Salaam, Tanzania",
 };
 
-// Broader mandate (shown on About).
-export const scope = "UGUTU Community Foundation is based in Arusha and Manyara, but our registration allows us to work anywhere in Tanzania — and as funding grows, so will our reach. While our schools are at the centre of what we do, our mandate is broader: we work for social development among vulnerable families and individuals across the country, from education and livelihoods to the environment and the rights of women and children.";
+// Broader mandate (shown on About and Organization Profile).
+export const scope = "UGUTU Community Foundation works across Tanzania for the social development of vulnerable and marginalised groups — children, youth, women and families alike. Education is our foundation, but our mandate is broader: alongside our schools we work on entrepreneurship and livelihoods, environmental conservation, and the rights of women and children. Headquartered in Arusha, and registered to operate anywhere in the country, we grow our reach wherever we are needed and as resources allow.";
 
-// Generic image slots — drop a file in public/images/ and set the path here.
+// Image slots — drop a file in public/images/ and set the path here.
 export const images = {
-  hero: "",        // e.g. /images/hero.jpg
-  story: "",       // e.g. /images/story.jpg
-  serve: "",       // e.g. /images/serve.jpg
-  funding: "",     // e.g. /images/funding.jpg
+  hero: "/images/web/hero.jpg",
+  story: "/images/web/story.jpg",
+  serve: "/images/web/serve.jpg",
+  funding: "/images/web/community.jpg",
+  volunteer: "/images/web/volunteer.jpg",
+  goods: "/images/web/serve.jpg",
+  partner: "/images/web/story.jpg",
+  profile: "/images/web/community.jpg",
 };
 
-// The story / why we exist (from the constitution preamble + community context).
+// The story / why we exist.
 export const story = `Many members of our community have never been able to access quality education, held back by poverty and the simple inability to afford the cost of schooling. Children from poor families are the most exposed. In pastoralist Maasai communities especially, girls are too often pulled out of school by early marriage and early pregnancy, while others drift toward child labour and drug use when the classroom door stays closed. UGUTU Community Foundation exists to change that — to make quality education reachable for orphans and vulnerable children, and to build stronger, self-reliant communities around them.`;
 
 // The two schools run under the Foundation.
@@ -64,17 +68,10 @@ export const schools = [
     location: "Simanjiro, Manyara Region",
     tag: "Our main project",
     lead: true,
-    image: "", // /images/schools/ugutu-pre-primary.jpg
-    summary:
-      "Our growing school in the Maasai community of Simanjiro — and the focus of our work this year.",
-    body:
-      "Simanjiro is where most of our effort now goes. We have land to grow, and a community that increasingly wants education for its children. Our goal this year is to raise funds to build classrooms and dormitories so more children can learn — and board — safely, and to sponsor children whose families cannot meet the cost of school.",
-    needs: [
-      "Classroom construction",
-      "Dormitory construction",
-      "Child sponsorship",
-      "Uniforms, stationery & shoes",
-    ],
+    image: "/images/web/simanjiro.jpg",
+    summary: "Our growing school in the Maasai community of Simanjiro — and the focus of our work this year.",
+    body: "Simanjiro is where most of our effort now goes. We have land to grow, and a community that increasingly wants education for its children. Our goal this year is to raise funds to build classrooms and dormitories so more children can learn — and board — safely, and to sponsor children whose families cannot meet the cost of school.",
+    needs: ["Classroom construction", "Dormitory construction", "Child sponsorship", "Uniforms, stationery & shoes"],
   },
   {
     slug: "jowin-daycare",
@@ -82,11 +79,9 @@ export const schools = [
     location: "Mji Mwema, Usa River, Arumeru District",
     tag: "Early education",
     lead: false,
-    image: "", // /images/schools/jowin-daycare.jpg
-    summary:
-      "Our pre-primary school in Usa River, where the youngest children begin their education.",
-    body:
-      "At JOWIN Daycare in Usa River we teach early, foundational learning and work to find sponsors so vulnerable children can continue their schooling. It is where many children take their very first steps into education.",
+    image: "/images/web/jowin.jpg",
+    summary: "Our pre-primary school in Usa River, where the youngest children begin their education.",
+    body: "At JOWIN Daycare in Usa River we teach early, foundational learning and work to find sponsors so vulnerable children can continue their schooling. It is where many children take their very first steps into education.",
     needs: ["Child sponsorship", "Learning materials"],
   },
 ];
@@ -103,71 +98,74 @@ export const appeal = {
   ],
 };
 
-// Programs = the objectives from Article 9 of the constitution.
+// Programs = the objectives from Article 9 — for children, youth, women and families.
 export const programs = [
   {
     slug: "quality-education",
-    title: "Quality Education for Vulnerable Children",
-    summary:
-      "Promoting good, quality education for orphans and vulnerable children so that poverty is never the reason a child stays out of school.",
-    body:
-      "At the heart of everything we do is a simple belief: every Tanzanian child deserves a real chance to learn. Through our schools we remove the barriers — cost, distance, and hardship — that keep orphans and vulnerable children out of the classroom, and keep them learning once they are there.",
+    title: "Education & Sponsorship",
+    summary: "Quality education and sponsorship for orphans, vulnerable children and young people, so poverty is never the reason a learner leaves school.",
+    body: "Education is where we start. Through our schools and sponsorships we remove the barriers — cost, distance and hardship — that keep vulnerable children and youth out of the classroom, and we keep them learning once they are there.",
   },
   {
     slug: "entrepreneurship",
-    title: "Community Entrepreneurship Skills",
-    summary:
-      "Empowering community members with practical entrepreneurship and livelihood skills that build lasting self-reliance.",
-    body:
-      "Education does not end at childhood. We equip families and young people with entrepreneurship and income-generating skills, so households can support their own children's schooling and communities can grow stronger from within.",
+    title: "Livelihoods & Entrepreneurship",
+    summary: "Practical entrepreneurship and income-generating skills for families, women and youth, building lasting self-reliance.",
+    body: "Strong families raise educated children. We equip parents, women and young people with entrepreneurship and livelihood skills, so households can support their own children's schooling and communities can grow stronger from within.",
   },
   {
     slug: "environment",
-    title: "Environment Conservation",
-    summary:
-      "Advocating for environmental conservation and helping communities protect the land they depend on.",
-    body:
-      "A healthy environment is the foundation of a healthy community. We raise awareness and support local action to conserve the natural resources our communities rely on for the future.",
+    title: "Environment & Community",
+    summary: "Advocating for environmental conservation and helping communities protect the land and resources they depend on.",
+    body: "A healthy environment is the foundation of a healthy community. We raise awareness and support local action to conserve the natural resources our communities rely on today and for the future.",
   },
   {
     slug: "rights-awareness",
-    title: "Children's & Women's Rights",
-    summary:
-      "Raising awareness about the rights of children and women, and standing up for the vulnerable and voiceless.",
-    body:
-      "We speak up for the marginalised, voiceless and underprivileged — especially women, youth and children — through awareness, advocacy and community education about the rights every person holds, including a girl's right to stay in school.",
+    title: "Rights & Advocacy",
+    summary: "Standing up for the vulnerable and voiceless — the rights of women, youth and children across the community.",
+    body: "We speak up for the marginalised, voiceless and underprivileged — especially women, youth and children — through awareness, advocacy and community education about the rights every person holds, including a girl's right to stay in school.",
   },
 ];
 
-// Ways to help.
+// Project activities — the "what we're doing" feed. Add photos and update freely.
+export const activities = [
+  {
+    title: "Early learning at JOWIN Daycare",
+    location: "Usa River, Arusha",
+    image: "/images/web/jowin.jpg",
+    text: "Our youngest pupils get their first foundation — reading, numbers and play-based learning — in a safe, caring classroom.",
+  },
+  {
+    title: "Growing the school in Simanjiro",
+    location: "Simanjiro, Manyara",
+    image: "/images/web/simanjiro.jpg",
+    text: "Developing classrooms and boarding for children in the Maasai community, so more can learn close to home.",
+  },
+  {
+    title: "Sponsoring vulnerable children",
+    location: "Across our schools",
+    image: "/images/web/serve.jpg",
+    text: "Covering fees, uniforms and materials for orphans and vulnerable children who could not otherwise attend school.",
+  },
+  {
+    title: "Volunteers on the ground",
+    location: "Arusha & Simanjiro",
+    image: "/images/web/volunteer.jpg",
+    text: "Visitors join our teachers to support teaching, mentoring and the daily life of our schools.",
+  },
+];
+
+// Testimonials — add as you gather them: { quote, name, role, image }
+export const testimonials = [];
+
+// Ways to help (homepage).
 export const involve = [
-  {
-    title: "Donate",
-    blurb: "Fund classrooms, dormitories and school places for children who cannot afford them.",
-    cta: "Support our work",
-    href: "/get-involved/#donate",
-  },
-  {
-    title: "Give goods",
-    blurb: "Donate uniforms, stationery, shoes and learning materials — the everyday basics that keep a child in class.",
-    cta: "Donate goods",
-    href: "/get-involved/#goods",
-  },
-  {
-    title: "Volunteer",
-    blurb: "Visitors are welcome to give their time on the ground — teaching, mentoring and supporting our schools.",
-    cta: "Become a volunteer",
-    href: "/get-involved/#volunteer",
-  },
-  {
-    title: "Partner",
-    blurb: "Organisations and sponsors can partner with us on grants, construction and long-term projects.",
-    cta: "Partner with us",
-    href: "/get-involved/#partner",
-  },
+  { title: "Donate", blurb: "Fund classrooms, dormitories and school places for children who cannot afford them.", cta: "Support our work", href: "/get-involved/#donate" },
+  { title: "Give goods", blurb: "Donate uniforms, stationery, shoes and learning materials — the basics that keep a child in class.", cta: "Donate goods", href: "/get-involved/#goods" },
+  { title: "Volunteer", blurb: "Visitors are welcome to give their time — teaching, mentoring and supporting our schools.", cta: "Become a volunteer", href: "/get-involved/#volunteer" },
+  { title: "Partner", blurb: "Organisations and sponsors can partner with us on grants, construction and long-term projects.", cta: "Partner with us", href: "/get-involved/#partner" },
 ];
 
-// Leadership — Article 30 organisation members table.
+// Leadership — Article 30 organisation members.
 export const team = [
   { name: "Joel Alan Vomo", role: "Chairperson" },
   { name: "Winifrida Epimark Massawe", role: "Executive Secretary" },
@@ -185,16 +183,31 @@ export const fundingSources = [
   "Income-generating activities",
 ];
 
-// Gallery. Add images to fill it:
-// { src: "/images/gallery/photo-1.jpg", alt: "Description", caption: "Optional caption" }
-export const gallery = [];
+// Objectives (Article 9) — used on the Organization Profile.
+export const objectives = [
+  "Promote good, quality education for orphans and vulnerable children",
+  "Empower the community with entrepreneurship and livelihood skills",
+  "Advocate for environmental conservation",
+  "Raise awareness of the rights of children and women",
+];
+
+// Gallery images.
+export const gallery = [
+  { src: "/images/web/serve.jpg", alt: "Children at their desks in class", caption: "In the classroom" },
+  { src: "/images/web/jowin.jpg", alt: "A classroom at JOWIN Daycare", caption: "JOWIN Daycare, Usa River" },
+  { src: "/images/web/simanjiro.jpg", alt: "Pupils at UGUTU Pre & Primary School", caption: "UGUTU Pre & Primary, Simanjiro" },
+  { src: "/images/web/volunteer.jpg", alt: "A volunteer with pupils outside the school", caption: "Volunteers with our pupils" },
+  { src: "/images/web/community.jpg", alt: "Volunteers and children together", caption: "Together" },
+  { src: "/images/web/story.jpg", alt: "Group at a 'place where love grows for learning' mural", caption: "A place where love grows for learning" },
+  { src: "/images/web/hero.jpg", alt: "Children learning in the classroom", caption: "Learning" },
+];
 
 // Primary navigation.
 export const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about/" },
   { label: "Our Schools", href: "/schools/" },
-  { label: "Programs", href: "/programs/" },
+  { label: "Our Work", href: "/our-work/" },
   { label: "Get Involved", href: "/get-involved/" },
   { label: "Gallery", href: "/gallery/" },
   { label: "Contact", href: "/contact/" },

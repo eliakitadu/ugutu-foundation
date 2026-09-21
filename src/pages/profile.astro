@@ -1,0 +1,166 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { org, scope, story, objectives, team, fundingSources, contacts, bank, schools } from "../data/site.js";
+---
+
+<BaseLayout title="Organization Profile" description="Official organization profile of UGUTU Community Foundation — registration, vision, mission, objectives, governance and leadership.">
+  <!-- HEADER -->
+  <section class="section section--tight section--paper profile-head">
+    <div class="container">
+      <img src={org.logo} alt={org.name} class="profile-logo" />
+      <p class="kicker">Organization Profile</p>
+      <h1 style="max-width: 20ch;">{org.name}</h1>
+      <p class="lead">{org.registration}</p>
+    </div>
+  </section>
+
+  <!-- FAST FACTS -->
+  <section class="section section--sand section--tight">
+    <div class="container facts">
+      <div><span class="facts__k">Legal status</span><span class="facts__v">Registered NGO (NGO Act No. 24 of 2002)</span></div>
+      <div><span class="facts__k">Headquarters</span><span class="facts__v">Usa River, Arusha, Tanzania</span></div>
+      <div><span class="facts__k">Area of operation</span><span class="facts__v">Nationwide, across Tanzania</span></div>
+      <div><span class="facts__k">Focus</span><span class="facts__v">Education & social development</span></div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="section section--white">
+    <div class="container measure-wide">
+      <p class="kicker">Who we are</p>
+      <h2>About the foundation</h2>
+      <p>{story}</p>
+      <p class="mb-0">{scope}</p>
+    </div>
+  </section>
+
+  <!-- VISION / MISSION -->
+  <section class="section section--green">
+    <div class="container split">
+      <div>
+        <p class="kicker">Vision</p>
+        <p class="statement" style="color:#fffdf8;">{org.vision}</p>
+      </div>
+      <div>
+        <p class="kicker">Mission</p>
+        <p class="statement" style="color:#fffdf8;">{org.mission}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIVES -->
+  <section class="section section--white">
+    <div class="container">
+      <p class="kicker">Our objectives</p>
+      <h2 style="max-width:20ch;">What we set out to do</h2>
+      <ol class="obj">
+        {objectives.map((o) => <li>{o}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE & LEADERSHIP -->
+  <section class="section section--sand">
+    <div class="container split split--wide-text" style="align-items:start;">
+      <div>
+        <p class="kicker">Governance</p>
+        <h2>How we are run</h2>
+        <p>UGUTU Community Foundation is governed by a <strong>General Meeting</strong> of its members — the supreme organ of the organisation — and a <strong>Board of Directors</strong> that oversees strategy, projects and day-to-day management.</p>
+        <p class="mb-0">Office bearers are elected by the General Meeting and serve a five-year term. The Board meets regularly and is accountable to the membership, with funds applied solely to advancing the foundation's objectives.</p>
+      </div>
+      <div>
+        <p class="kicker">Leadership</p>
+        <ul class="lead-list">
+          {team.map((m) => (
+            <li><span class="lead-list__name">{m.name}</span><span class="lead-list__role">{m.role}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE WE WORK -->
+  <section class="section section--white">
+    <div class="container">
+      <p class="kicker">Where we work</p>
+      <h2 style="max-width:22ch;">Rooted locally, registered nationally</h2>
+      <p class="measure">Headquartered in Usa River, Arusha, and registered to operate anywhere in Tanzania, we currently run two schools:</p>
+      <div class="wherein">
+        {schools.map((s) => (
+          <div class="wherein__item">
+            <h3>{s.name}</h3>
+            <p class="wherein__loc">{s.location}</p>
+            <p class="mb-0">{s.summary}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDING -->
+  <section class="section section--sand">
+    <div class="container">
+      <p class="kicker">Funding</p>
+      <h2 style="max-width:22ch;">How the foundation is resourced</h2>
+      <div class="mt-1">{fundingSources.map((f) => <span class="pill">{f}</span>)}</div>
+    </div>
+  </section>
+
+  <!-- CONTACT & BANK -->
+  <section class="section section--white">
+    <div class="container split split--wide-text" style="align-items:start;">
+      <div>
+        <p class="kicker">Contact</p>
+        <h2 style="font-size:1.6rem;">Get in touch</h2>
+        <dl class="p-dl">
+          <dt>Address</dt>
+          <dd>{org.address.street}<br />{org.address.ward}<br />{org.address.region}<br />{org.address.poBox}</dd>
+          <dt>Phone</dt>
+          <dd>{contacts.map((c) => <span class="p-phone"><a href={`tel:${c.tel}`}>{c.phone}</a> · {c.name}</span>)}</dd>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${org.email}`}>{org.email}</a></dd>
+          {org.social.instagram && <><dt>Instagram</dt><dd><a href={`https://instagram.com/${org.social.instagram}`} target="_blank" rel="noopener">@{org.social.instagram}</a></dd></>}
+        </dl>
+      </div>
+      <div class="bankcard">
+        <p class="bankcard__head">Donations · Bank transfer ({bank.currency})</p>
+        <dl>
+          <dt>Account name</dt><dd>{bank.accountName}</dd>
+          <dt>Account no.</dt><dd class="mono">{bank.accountNumber}</dd>
+          <dt>Bank</dt><dd>{bank.bankName}</dd>
+          <dt>Branch</dt><dd>{bank.branch}</dd>
+          <dt>SWIFT</dt><dd class="mono">{bank.swift}</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .profile-logo { height: 84px; width: auto; margin-bottom: 1.5rem; }
+  .measure-wide { max-width: 72ch; }
+
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .facts > div { display: flex; flex-direction: column; gap: 0.3rem; }
+  .facts__k { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.68rem; font-weight: 700; color: var(--clay-ink); }
+  .facts__v { color: var(--ink); font-weight: 500; }
+  @media (max-width: 760px) { .facts { grid-template-columns: 1fr 1fr; } }
+
+  .obj { counter-reset: o; list-style: none; padding: 0; margin: 2rem 0 0; max-width: 62ch; }
+  .obj li { counter-increment: o; position: relative; padding: 1rem 0 1rem 3rem; border-bottom: 1px solid var(--line); color: var(--ink); }
+  .obj li::before { content: counter(o, decimal-leading-zero); position: absolute; left: 0; top: 0.85rem; font-family: var(--font-display); color: var(--clay); font-size: 1.2rem; }
+
+  .lead-list { list-style: none; padding: 0; margin: 0; }
+  .lead-list li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--line); }
+  .lead-list__name { font-weight: 600; color: var(--ink); }
+  .lead-list__role { color: var(--clay-ink); font-size: 0.9rem; text-align: right; }
+
+  .wherein { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  @media (max-width: 700px) { .wherein { grid-template-columns: 1fr; } }
+  .wherein__item { padding: 1.5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+  .wherein__loc { color: var(--clay-ink); font-weight: 600; font-size: 0.9rem; margin: 0.2rem 0 0.7rem; }
+
+  .p-dl dt { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.7rem; font-weight: 700; color: var(--clay-ink); margin-top: 1.1rem; }
+  .p-dl dd { margin: 0.35rem 0 0; line-height: 1.7; }
+  .p-phone { display: block; }
+</style>
