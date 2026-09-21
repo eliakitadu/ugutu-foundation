@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Figure from "../components/Figure.astro";
-import { org, story, team, fundingSources, images } from "../data/site.js";
+import { org, story, team, fundingSources, images, scope } from "../data/site.js";
 ---
 
 <BaseLayout title="About" description="Who we are — the story, vision, mission and people behind UGUTU Community Foundation.">
@@ -17,7 +17,8 @@ import { org, story, team, fundingSources, images } from "../data/site.js";
     <div class="container split">
       <div>
         <p class="kicker">Our story</p>
-        <p class="mb-0">{story}</p>
+        <p>{story}</p>
+        <p class="mb-0">{scope}</p>
       </div>
       <Figure src={images.story} label="A founding or community photograph belongs here" alt="UGUTU Community Foundation community" variant="frame--sand" />
     </div>

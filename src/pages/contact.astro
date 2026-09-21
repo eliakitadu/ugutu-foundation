@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { org } from "../data/site.js";
+import { org, contacts } from "../data/site.js";
 ---
 
 <BaseLayout title="Contact" description="Get in touch with UGUTU Community Foundation in Arusha, Tanzania.">
@@ -26,6 +26,12 @@ import { org } from "../data/site.js";
             {org.address.region}<br />
             {org.address.poBox}
           </dd>
+          <dt>Phone</dt>
+          <dd>
+            {contacts.map((c) => (
+              <span class="contact-phone"><a href={`tel:${c.tel}`}>{c.phone}</a> · {c.name}</span>
+            ))}
+          </dd>
           <dt>Email</dt>
           <dd><a href={`mailto:${org.email}`}>{org.email}</a></dd>
           {org.social.instagram && (
@@ -35,7 +41,6 @@ import { org } from "../data/site.js";
             </>
           )}
         </dl>
-        <p style="color:var(--muted);font-size:0.9rem;margin-top:1.5rem;">A phone number and social links will go here once confirmed.</p>
       </div>
 
       <!-- Form -->
@@ -57,6 +62,7 @@ import { org } from "../data/site.js";
   .contact-dl { margin: 1.5rem 0 0; }
   .contact-dl dt { font-family: var(--font-text); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--clay-ink); margin-top: 1.25rem; }
   .contact-dl dd { margin: 0.35rem 0 0; line-height: 1.7; color: var(--body); }
+  .contact-phone { display: block; }
 
   .contact-form { background: var(--paper); padding: clamp(1.35rem, 1rem + 1.5vw, 2rem); border: 1px solid var(--line); border-radius: 6px; }
   .field { margin-bottom: 1.1rem; }

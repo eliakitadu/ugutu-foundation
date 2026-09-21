@@ -8,11 +8,10 @@ export const org = {
   logo: "", // set to "/images/logo.png" once the logo file is added to public/images/
   tagline: "Helping deprived Tanzanian children realise their full potential through education.",
   registration: "Registered NGO under the Non-Governmental Organizations Act, No. 24 of 2002, United Republic of Tanzania.",
-  areaOfOperation: "Operating in Arusha and Manyara Regions, Tanzania.",
+  areaOfOperation: "Based in Arusha and Manyara Regions, and registered to work nationwide across Tanzania.",
   vision: "Helping deprived Tanzanian children realise their full potential through education.",
   mission: "Providing quality services to the community through quality education.",
   email: "info@ugutufoundation.org", // TODO: not wired to a mailbox yet
-  phone: "", // TODO: add phone number
   address: {
     street: "Mji Mwema Street, near Unambwe Secondary School",
     ward: "Usa River Ward, Arumeru District",
@@ -25,6 +24,26 @@ export const org = {
     youtube: "", // TODO
   },
 };
+
+// Phone contacts.
+export const contacts = [
+  { name: "Joel Vomo", role: "Chairperson", phone: "0754 882 111", tel: "+255754882111" },
+  { name: "Winifrida Massawe", role: "Executive Secretary", phone: "0767 358 800", tel: "+255767358800" },
+];
+
+// Bank account for donations (KCB Bank Tanzania).
+export const bank = {
+  bankName: "KCB Bank Tanzania Limited",
+  branch: "Arusha Papu",
+  accountName: "UGUTU COMMUNITY",
+  accountNumber: "3391643595",
+  currency: "TZS",
+  swift: "KCBLTZTZ", // for international transfers
+  bankAddress: "Ali Hassan Mwinyi / Kaunda Drive Junction, P.O. Box 804, Dar es Salaam, Tanzania",
+};
+
+// Broader mandate (shown on About).
+export const scope = "UGUTU Community Foundation is based in Arusha and Manyara, but our registration allows us to work anywhere in Tanzania — and as funding grows, so will our reach. While our schools are at the centre of what we do, our mandate is broader: we work for social development among vulnerable families and individuals across the country, from education and livelihoods to the environment and the rights of women and children.";
 
 // Generic image slots — drop a file in public/images/ and set the path here.
 export const images = {

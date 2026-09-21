@@ -1,5 +1,5 @@
 ---
-import { org, nav } from "../data/site.js";
+import { org, nav, contacts } from "../data/site.js";
 const year = new Date().getFullYear();
 ---
 
@@ -28,6 +28,13 @@ const year = new Date().getFullYear();
             {org.address.poBox}
           </address>
           <p class="footer-email"><a href={`mailto:${org.email}`}>{org.email}</a></p>
+          {contacts && contacts.length > 0 && (
+            <p class="footer-phone">
+              {contacts.map((c, i) => (
+                <Fragment><a href={`tel:${c.tel}`}>{c.phone}</a>{i < contacts.length - 1 ? " · " : ""}</Fragment>
+              ))}
+            </p>
+          )}
           {org.social.instagram && (
             <p class="footer-social">
               <a href={`https://instagram.com/${org.social.instagram}`} target="_blank" rel="noopener">Instagram · @{org.social.instagram}</a>
@@ -53,6 +60,7 @@ const year = new Date().getFullYear();
   .footer-word { font-family: var(--font-display); font-size: 2.6rem; color: #fffdf8; margin: 0 0 0.6rem; letter-spacing: 0.02em; }
   .footer-logo { height: 60px; width: auto; margin-bottom: 0.8rem; }
   .footer-social { margin-top: 0.5rem; }
+  .footer-phone { margin-top: 0.6rem; }
   .footer-tagline { color: #c3d4c9; max-width: 34ch; margin: 0 0 0.5rem; }
 
   .footer-cols { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; }

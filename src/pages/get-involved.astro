@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Figure from "../components/Figure.astro";
-import { org } from "../data/site.js";
+import { org, bank, contacts } from "../data/site.js";
 const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 ---
 
@@ -21,10 +21,25 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
         <p class="kicker">01 — Give funds</p>
         <h2>Donate</h2>
         <p>Your gift goes straight into the things children need most — classrooms and dormitories at our Simanjiro school, and school places for orphans and vulnerable children who cannot afford them.</p>
-        <p>We're finalising our giving channels. For a Tanzanian NGO these usually include mobile money (M-Pesa, Tigo Pesa, Airtel Money) and a bank transfer to the foundation's account. Once confirmed, the details and a live donate button will appear here.</p>
-        <a href="/contact/" class="arrow mt-1">Ask how to give <Fragment set:html={arrow} /></a>
+        <p>You can give by direct bank transfer to the foundation's account. To arrange mobile money or another way to give, just call us — we're happy to help.</p>
+        <div class="callus">
+          {contacts.map((c) => (
+            <a href={`tel:${c.tel}`} class="callus__item"><strong>{c.phone}</strong><span>{c.name}</span></a>
+          ))}
+        </div>
       </div>
-      <Figure src="" label="A photograph about giving belongs here" alt="Supporting a child's education" />
+
+      <div class="bankcard">
+        <p class="bankcard__head">Bank transfer · {bank.currency}</p>
+        <dl>
+          <dt>Account name</dt><dd>{bank.accountName}</dd>
+          <dt>Account number</dt><dd class="mono">{bank.accountNumber}</dd>
+          <dt>Bank</dt><dd>{bank.bankName}</dd>
+          <dt>Branch</dt><dd>{bank.branch}</dd>
+          <dt>SWIFT (international)</dt><dd class="mono">{bank.swift}</dd>
+        </dl>
+        <p class="bankcard__note">{bank.bankAddress}</p>
+      </div>
     </div>
   </section>
 
@@ -77,3 +92,35 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .callus { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+  .callus__item {
+    display: flex; flex-direction: column; line-height: 1.2;
+    padding: 0.7rem 1.1rem; border: 1px solid var(--line); border-radius: 6px;
+    background: var(--white); color: var(--ink); text-decoration: none;
+  }
+  .callus__item:hover { border-color: var(--clay); text-decoration: none; }
+  .callus__item strong { font-size: 1.05rem; }
+  .callus__item span { font-size: 0.82rem; color: var(--muted); margin-top: 0.15rem; }
+
+  .bankcard {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 8px; padding: clamp(1.35rem, 1rem + 1.5vw, 2rem);
+    box-shadow: var(--shadow-sm); align-self: start;
+  }
+  .bankcard__head {
+    font-family: var(--font-text); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 0.72rem; font-weight: 700; color: var(--clay-ink);
+    margin: 0 0 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--line);
+  }
+  .bankcard dl { display: grid; grid-template-columns: auto 1fr; gap: 0.55rem 1.25rem; margin: 0; }
+  .bankcard dt { color: var(--muted); font-size: 0.85rem; }
+  .bankcard dd { margin: 0; color: var(--ink); font-weight: 600; text-align: right; }
+  .bankcard .mono { font-variant-numeric: tabular-nums; letter-spacing: 0.03em; }
+  .bankcard__note { margin: 1rem 0 0; padding-top: 0.9rem; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--muted); }
+  @media (max-width: 460px) {
+    .bankcard dl { grid-template-columns: 1fr; gap: 0.15rem; }
+    .bankcard dd { text-align: left; margin-bottom: 0.6rem; }
+  }
+</style>
