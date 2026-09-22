@@ -11,7 +11,7 @@ export const org = {
   areaOfOperation: "A national organisation working across Tanzania, headquartered in Arusha.",
   vision: "Helping deprived Tanzanian children realise their full potential through education.",
   mission: "Providing quality services to the community through quality education.",
-  email: "info@ugutufoundation.org", // TODO: not wired to a mailbox yet
+  email: "info@ugutucommunityfoundation.org", // TODO: mailbox to be set up (Zoho)
   address: {
     street: "Mji Mwema Street, near Unambwe Secondary School",
     ward: "Usa River Ward, Arumeru District",
@@ -68,7 +68,7 @@ export const schools = [
     location: "Simanjiro, Manyara Region",
     tag: "Our main project",
     lead: true,
-    image: "/images/web/gallery/IMG_5836.jpg",
+    image: "/images/web/gallery/simanjiro-school.jpg",
     summary: "Our growing school in the Maasai community of Simanjiro — and the focus of our work this year.",
     body: "Simanjiro is where most of our effort now goes. We have land to grow, and a community that increasingly wants education for its children. Our goal this year is to raise funds to build classrooms and dormitories so more children can learn — and board — safely, and to sponsor children whose families cannot meet the cost of school.",
     needs: ["Classroom construction", "Dormitory construction", "Child sponsorship", "Uniforms, stationery & shoes"],
@@ -137,7 +137,7 @@ export const activities = [
   {
     title: "Growing the school in Simanjiro",
     location: "Simanjiro, Manyara",
-    image: "/images/web/gallery/IMG_5839.jpg",
+    image: "/images/web/gallery/simanjiro-classroom.jpg",
     text: "Developing classrooms and boarding for children in the Maasai community, so more can learn close to home.",
   },
   {
@@ -197,8 +197,12 @@ export const gallery = [
   { src: `${G}/IMG_8212.jpg`, alt: "Children outside the JOWIN Daycare signboard", caption: "At JOWIN Daycare, Usa River" },
   { src: `${G}/IMG_0899.jpg`, alt: "Two smiling pupils with a volunteer", caption: "Joy in every day" },
   { src: `${G}/20260114_091049.jpg`, alt: "Pupils in blue uniform at the chalkboard", caption: "Ready to learn" },
-  { src: `${G}/IMG_5836.jpg`, alt: "Children learning outdoors in Simanjiro", caption: "Outdoor learning, Simanjiro" },
-  { src: `${G}/IMG_5839.jpg`, alt: "A volunteer teaching children in Simanjiro", caption: "Lessons in the Maasai community" },
+  { src: `${G}/simanjiro-school.jpg`, alt: "The UGUTU Pre & Primary School building in Simanjiro", caption: "Our school in Simanjiro" },
+  { src: `${G}/simanjiro-classroom.jpg`, alt: "A bright classroom at the Simanjiro school", caption: "Inside the Simanjiro classroom" },
+  { src: `${G}/simanjiro-class-window.jpg`, alt: "Children learning at the Simanjiro school", caption: "A day in class, Simanjiro" },
+  { src: `${G}/simanjiro-reading.jpg`, alt: "Children reading together in Simanjiro", caption: "Reading together" },
+  { src: `${G}/simanjiro-kids.jpg`, alt: "Two pupils at the Simanjiro school", caption: "Simanjiro pupils" },
+  { src: `${G}/simanjiro-meal.jpg`, alt: "Children sharing a meal at school", caption: "A warm meal at school" },
   { src: `${G}/IMG_1141.jpg`, alt: "Children learning with tablets in class", caption: "Learning with tablets" },
   { src: `${G}/IMG_1143.jpg`, alt: "A pupil smiling with a learning tablet", caption: "In class" },
   { src: `${G}/IMG_2333.jpg`, alt: "Donated uniforms, shoes and stationery", caption: "Uniforms, shoes & supplies" },

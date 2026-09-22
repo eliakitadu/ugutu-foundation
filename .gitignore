@@ -17,3 +17,5 @@ public/images/*.heic
 public/images/*.jpg
 public/images/*.jpeg
 public/images/*.png
+# raw phone exports (optimised clean-named copies are committed instead)
+public/images/web/gallery/PXL_*
