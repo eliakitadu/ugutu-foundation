@@ -5,24 +5,32 @@ const endpoint = org.formEndpoint;
 ---
 
 {endpoint ? (
-  <form class="cform" action={endpoint} method="POST">
+  <form class="cform" action={endpoint} method="POST" data-cform>
     <input type="hidden" name="_subject" value={subject} />
-    <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" required /></div>
-    <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required /></div>
-    {showInterest && (
-      <div class="field">
-        <label for="cf-interest">I'd like to support</label>
-        <select id="cf-interest" name="interest">
-          <option>A monthly gift</option>
-          <option>A one-off gift</option>
-          <option>Sponsor a child</option>
-          <option>Sponsor a project</option>
-          <option>Something else</option>
-        </select>
-      </div>
-    )}
-    <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="5" required></textarea></div>
-    <button type="submit" class="btn btn--solid">Send message</button>
+    <div class="cform__status cform__status--ok" data-cform-success hidden>
+      <strong>Thank you!</strong> Your message has been sent — we'll be in touch soon.
+    </div>
+    <div class="cform__status cform__status--err" data-cform-error hidden>
+      Sorry, something went wrong. Please email us directly at <a href={`mailto:${org.email}`}>{org.email}</a>.
+    </div>
+    <div class="cform__fields">
+      <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" required /></div>
+      <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required /></div>
+      {showInterest && (
+        <div class="field">
+          <label for="cf-interest">I'd like to support</label>
+          <select id="cf-interest" name="interest">
+            <option>A monthly gift</option>
+            <option>A one-off gift</option>
+            <option>Sponsor a child</option>
+            <option>Sponsor a project</option>
+            <option>Something else</option>
+          </select>
+        </div>
+      )}
+      <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="5" required></textarea></div>
+      <button type="submit" class="btn btn--solid">Send message</button>
+    </div>
   </form>
 ) : (
   <div class="cform cform--placeholder">
@@ -42,4 +50,40 @@ const endpoint = org.formEndpoint;
   }
   .cform textarea { resize: vertical; }
   .cform input:focus, .cform textarea:focus, .cform select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(30,77,58,0.12); }
+  .cform__status { padding: 1rem 1.1rem; border-radius: 6px; margin-bottom: 0.25rem; }
+  .cform__status--ok { background: rgba(30,77,58,0.08); border: 1px solid var(--green); color: var(--ink); }
+  .cform__status--err { background: rgba(184,83,47,0.08); border: 1px solid var(--clay); color: var(--ink); }
 </style>
+
+<script>
+  document.querySelectorAll("form[data-cform]").forEach((form) => {
+    const ok = form.querySelector("[data-cform-success]");
+    const err = form.querySelector("[data-cform-error]");
+    const fields = form.querySelector(".cform__fields");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector("button[type=submit]");
+      const label = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+      if (err) err.hidden = true;
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          if (fields) fields.hidden = true;
+          if (ok) { ok.hidden = false; ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
+          form.reset();
+        } else {
+          if (err) err.hidden = false;
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+        }
+      } catch (_) {
+        if (err) err.hidden = false;
+        if (btn) { btn.disabled = false; btn.textContent = label; }
+      }
+    });
+  });
+</script>
