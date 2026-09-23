@@ -5,6 +5,7 @@ import ContactForm from "../components/ContactForm.astro";
 import Icon from "../components/Icon.astro";
 import { involve, donationTiers, images } from "../data/site.js";
 const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+const amountOptions = donationTiers.map((t) => `${t.amount} ${t.period}`);
 ---
 
 <BaseLayout title="Get Involved" description="Support UGUTU Community Foundation — donate, volunteer, partner, or sponsor a project.">
@@ -45,7 +46,7 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
           <article class="tier">
             <div class="tier__amt">{t.amount} <span>{t.period}</span></div>
             <p class="mb-0">{t.text}</p>
-            <a href="#donate-form" class="btn btn--green tier__btn">Give {t.amount}</a>
+            <a href="#donate-form" class="btn btn--green tier__btn" data-give={`${t.amount} ${t.period}`}>Give {t.amount}</a>
           </article>
         ))}
       </div>
@@ -56,7 +57,7 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
           <h3>Ready to give?</h3>
           <p>Send us a message and we'll reply with our giving details and answer any questions — including monthly giving, sponsoring a child, or supporting a specific project.</p>
         </div>
-        <ContactForm subject="Donation enquiry" showInterest={true} />
+        <ContactForm subject="Donation enquiry" amounts={amountOptions} messageRequired={false} />
       </div>
     </div>
   </section>

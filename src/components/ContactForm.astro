@@ -1,34 +1,44 @@
 ---
 import { org } from "../data/site.js";
-const { subject = "Website enquiry", showInterest = false } = Astro.props;
+const { subject = "Website enquiry", amounts = null, messageRequired = true } = Astro.props;
+const isDonation = Array.isArray(amounts) && amounts.length > 0;
 ---
 
 <form class="cform" action="/api/contact" method="POST" data-cform>
   <input type="hidden" name="subject" value={subject} />
   <input type="text" name="_gotcha" class="cform__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
   <div class="cform__status cform__status--ok" data-cform-success hidden>
-    <strong>Thank you!</strong> Your message has been sent — we'll be in touch soon.
+    <strong>Thank you!</strong> Your message has been sent — we'll be in touch soon with everything you need.
   </div>
   <div class="cform__status cform__status--err" data-cform-error hidden>
     Sorry, something went wrong. Please email us directly at <a href={`mailto:${org.email}`}>{org.email}</a>.
   </div>
   <div class="cform__fields">
-    <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" required /></div>
-    <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required /></div>
-    {showInterest && (
+    {isDonation && (
       <div class="field">
-        <label for="cf-interest">I'd like to support</label>
-        <select id="cf-interest" name="interest">
-          <option>A monthly gift</option>
-          <option>A one-off gift</option>
-          <option>Sponsor a child</option>
-          <option>Sponsor a project</option>
-          <option>Something else</option>
-        </select>
+        <label>Your gift</label>
+        <div class="amounts">
+          {amounts.map((a, i) => (
+            <label class="amt">
+              <input type="radio" name="amount" value={a} checked={i === 0} />
+              <span>{a}</span>
+            </label>
+          ))}
+          <label class="amt">
+            <input type="radio" name="amount" value="Custom" data-amount-custom />
+            <span>Other</span>
+          </label>
+        </div>
+        <input type="text" name="amount_custom" class="amt-custom" placeholder="Enter an amount (e.g. $50 / month)" hidden />
       </div>
     )}
-    <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="5" required></textarea></div>
-    <button type="submit" class="btn btn--solid">Send message</button>
+    <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" required /></div>
+    <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required /></div>
+    <div class="field">
+      <label for="cf-msg">{isDonation ? "Your message or question (optional)" : "Message"}</label>
+      <textarea id="cf-msg" name="message" rows="5" required={messageRequired && !isDonation}></textarea>
+    </div>
+    <button type="submit" class="btn btn--solid">{isDonation ? "Send my donation enquiry" : "Send message"}</button>
   </div>
 </form>
 
@@ -37,12 +47,24 @@ const { subject = "Website enquiry", showInterest = false } = Astro.props;
   .cform__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .field { margin-bottom: 1.1rem; }
   .cform label { display: block; font-weight: 600; color: var(--ink); margin-bottom: 0.45rem; font-size: 0.92rem; }
-  .cform input, .cform textarea, .cform select {
+  .cform input[type="text"], .cform input[type="email"], .cform textarea, .cform select {
     width: 100%; padding: 0.75rem 0.9rem; border: 1px solid var(--line); border-radius: 4px;
     font: inherit; color: var(--ink); background: var(--white);
   }
   .cform textarea { resize: vertical; }
   .cform input:focus, .cform textarea:focus, .cform select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(30,77,58,0.12); }
+
+  .amounts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .amt { margin: 0; cursor: pointer; }
+  .amt input { position: absolute; opacity: 0; pointer-events: none; }
+  .amt span {
+    display: inline-block; padding: 0.55rem 1rem; border: 1.5px solid var(--line); border-radius: 999px;
+    background: var(--white); font-weight: 600; font-size: 0.92rem; color: var(--ink); transition: all 0.15s ease;
+  }
+  .amt input:checked + span { background: var(--green); border-color: var(--green); color: #fff; }
+  .amt input:focus-visible + span { box-shadow: 0 0 0 3px rgba(30,77,58,0.25); }
+  .amt-custom { margin-top: 0.75rem; }
+
   .cform__status { padding: 1rem 1.1rem; border-radius: 6px; margin-bottom: 0.25rem; }
   .cform__status--ok { background: rgba(30,77,58,0.08); border: 1px solid var(--green); color: var(--ink); }
   .cform__status--err { background: rgba(184,83,47,0.08); border: 1px solid var(--clay); color: var(--ink); }
@@ -53,6 +75,16 @@ const { subject = "Website enquiry", showInterest = false } = Astro.props;
     const ok = form.querySelector("[data-cform-success]");
     const err = form.querySelector("[data-cform-error]");
     const fields = form.querySelector(".cform__fields");
+    const custom = form.querySelector(".amt-custom");
+    const amountRadios = form.querySelectorAll('input[name="amount"]');
+
+    // reveal the custom amount box only when "Other" is chosen
+    const syncCustom = () => {
+      const other = form.querySelector('input[name="amount"][data-amount-custom]');
+      if (custom) { custom.hidden = !(other && other.checked); if (!custom.hidden) custom.focus(); }
+    };
+    amountRadios.forEach((r) => r.addEventListener("change", syncCustom));
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const btn = form.querySelector("button[type=submit]");
@@ -78,6 +110,15 @@ const { subject = "Website enquiry", showInterest = false } = Astro.props;
         if (err) err.hidden = false;
         if (btn) { btn.disabled = false; btn.textContent = label; }
       }
+    });
+  });
+
+  // let the tier "Give X" buttons preselect an amount in the donate form
+  document.querySelectorAll("[data-give]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const val = el.getAttribute("data-give");
+      const radio = document.querySelector(`input[name="amount"][value="${CSS.escape(val)}"]`);
+      if (radio) { radio.checked = true; radio.dispatchEvent(new Event("change", { bubbles: true })); }
     });
   });
 </script>
