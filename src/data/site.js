@@ -13,9 +13,6 @@ export const org = {
   vision: "Helping deprived Tanzanian children realise their full potential through education.",
   mission: "Providing quality services to the community through quality education.",
   email: "info@ugutucommunityfoundation.org",
-  // Formspree form endpoint. Create a free form at https://formspree.io and paste its URL here,
-  // e.g. "https://formspree.io/f/xldbxxxx". Until then the forms show a friendly notice.
-  formEndpoint: "https://formspree.io/f/mbglyqka",
   address: {
     street: "Mji Mwema Street, near Unambwe Secondary School",
     ward: "Usa River Ward, Arumeru District",

@@ -1,47 +1,40 @@
 ---
 import { org } from "../data/site.js";
 const { subject = "Website enquiry", showInterest = false } = Astro.props;
-const endpoint = org.formEndpoint;
 ---
 
-{endpoint ? (
-  <form class="cform" action={endpoint} method="POST" data-cform>
-    <input type="hidden" name="_subject" value={subject} />
-    <div class="cform__status cform__status--ok" data-cform-success hidden>
-      <strong>Thank you!</strong> Your message has been sent — we'll be in touch soon.
-    </div>
-    <div class="cform__status cform__status--err" data-cform-error hidden>
-      Sorry, something went wrong. Please email us directly at <a href={`mailto:${org.email}`}>{org.email}</a>.
-    </div>
-    <div class="cform__fields">
-      <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" required /></div>
-      <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required /></div>
-      {showInterest && (
-        <div class="field">
-          <label for="cf-interest">I'd like to support</label>
-          <select id="cf-interest" name="interest">
-            <option>A monthly gift</option>
-            <option>A one-off gift</option>
-            <option>Sponsor a child</option>
-            <option>Sponsor a project</option>
-            <option>Something else</option>
-          </select>
-        </div>
-      )}
-      <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="5" required></textarea></div>
-      <button type="submit" class="btn btn--solid">Send message</button>
-    </div>
-  </form>
-) : (
-  <div class="cform cform--placeholder">
-    <p class="mb-0">Our online form is being set up. In the meantime, please email us at
-      <a href={`mailto:${org.email}?subject=${encodeURIComponent(subject)}`}> {org.email}</a> and we'll get straight back to you with everything you need.</p>
+<form class="cform" action="/api/contact" method="POST" data-cform>
+  <input type="hidden" name="subject" value={subject} />
+  <input type="text" name="_gotcha" class="cform__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <div class="cform__status cform__status--ok" data-cform-success hidden>
+    <strong>Thank you!</strong> Your message has been sent — we'll be in touch soon.
   </div>
-)}
+  <div class="cform__status cform__status--err" data-cform-error hidden>
+    Sorry, something went wrong. Please email us directly at <a href={`mailto:${org.email}`}>{org.email}</a>.
+  </div>
+  <div class="cform__fields">
+    <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" required /></div>
+    <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required /></div>
+    {showInterest && (
+      <div class="field">
+        <label for="cf-interest">I'd like to support</label>
+        <select id="cf-interest" name="interest">
+          <option>A monthly gift</option>
+          <option>A one-off gift</option>
+          <option>Sponsor a child</option>
+          <option>Sponsor a project</option>
+          <option>Something else</option>
+        </select>
+      </div>
+    )}
+    <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="5" required></textarea></div>
+    <button type="submit" class="btn btn--solid">Send message</button>
+  </div>
+</form>
 
 <style>
   .cform { background: var(--paper); padding: clamp(1.35rem, 1rem + 1.5vw, 2rem); border: 1px solid var(--line); border-radius: 8px; }
-  .cform--placeholder { display: flex; align-items: center; }
+  .cform__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .field { margin-bottom: 1.1rem; }
   .cform label { display: block; font-weight: 600; color: var(--ink); margin-bottom: 0.45rem; font-size: 0.92rem; }
   .cform input, .cform textarea, .cform select {
@@ -66,11 +59,12 @@ const endpoint = org.formEndpoint;
       const label = btn ? btn.textContent : "";
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
       if (err) err.hidden = true;
+      const payload = Object.fromEntries(new FormData(form).entries());
       try {
         const res = await fetch(form.action, {
           method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" },
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
         });
         if (res.ok) {
           if (fields) fields.hidden = true;
