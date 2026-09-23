@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { org, scope, story, objectives, team, fundingSources, contacts, bank, schools } from "../data/site.js";
+import { org, scope, story, objectives, team, fundingSources, contacts, centers } from "../data/site.js";
 ---
 
 <BaseLayout title="Organization Profile" description="Official organization profile of UGUTU Community Foundation — registration, vision, mission, objectives, governance and leadership.">
@@ -84,9 +84,9 @@ import { org, scope, story, objectives, team, fundingSources, contacts, bank, sc
     <div class="container">
       <p class="kicker">Where we work</p>
       <h2 style="max-width:22ch;">Rooted locally, registered nationally</h2>
-      <p class="measure">Headquartered in Usa River, Arusha, and registered to operate anywhere in Tanzania, we currently run two schools:</p>
+      <p class="measure">Headquartered in Usa River, Arusha, and registered to operate anywhere in Tanzania, we currently run two learning centers:</p>
       <div class="wherein">
-        {schools.map((s) => (
+        {centers.map((s) => (
           <div class="wherein__item">
             <h3>{s.name}</h3>
             <p class="wherein__loc">{s.location}</p>
@@ -106,7 +106,7 @@ import { org, scope, story, objectives, team, fundingSources, contacts, bank, sc
     </div>
   </section>
 
-  <!-- CONTACT & BANK -->
+  <!-- CONTACT -->
   <section class="section section--white">
     <div class="container split split--wide-text" style="align-items:start;">
       <div>
@@ -122,15 +122,10 @@ import { org, scope, story, objectives, team, fundingSources, contacts, bank, sc
           {org.social.instagram && <><dt>Instagram</dt><dd><a href={`https://instagram.com/${org.social.instagram}`} target="_blank" rel="noopener">@{org.social.instagram}</a></dd></>}
         </dl>
       </div>
-      <div class="bankcard">
-        <p class="bankcard__head">Donations · Bank transfer ({bank.currency})</p>
-        <dl>
-          <dt>Account name</dt><dd>{bank.accountName}</dd>
-          <dt>Account no.</dt><dd class="mono">{bank.accountNumber}</dd>
-          <dt>Bank</dt><dd>{bank.bankName}</dd>
-          <dt>Branch</dt><dd>{bank.branch}</dd>
-          <dt>SWIFT</dt><dd class="mono">{bank.swift}</dd>
-        </dl>
+      <div class="p-give">
+        <p class="kicker">Support our work</p>
+        <p>To donate, sponsor a child or a project, or partner with us, please get in touch and we'll share everything you need.</p>
+        <a href="/get-involved/#donate" class="btn btn--solid">Ways to give</a>
       </div>
     </div>
   </section>

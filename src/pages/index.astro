@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Figure from "../components/Figure.astro";
-import { org, programs, involve, story, schools, appeal, images } from "../data/site.js";
+import { org, pillars, involve, whyWeExist, whyWeExistCall, centers, appeal, images } from "../data/site.js";
 const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 ---
 
@@ -11,52 +11,62 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
     <div class="container split split--wide-text">
       <div>
         <p class="kicker">Working across Tanzania</p>
-        <h1>Every child deserves the <em>chance</em> to learn.</h1>
+        <h1>Every community deserves a chance to <em>thrive</em>.</h1>
         <p class="lead">{org.tagline}</p>
         <div class="actions mt-2">
           <a href="/get-involved/#donate" class="btn btn--solid">Donate now</a>
           <a href="/about/" class="arrow">Our story <Fragment set:html={arrow} /></a>
         </div>
       </div>
-      <Figure src={images.hero} tall label="A hero photo of the children / school belongs here"
-        alt="Children at a UGUTU Community Foundation school"
-        caption="Simanjiro, Manyara — where most of our work happens." />
+      <Figure src={images.hero} tall label="A hero photo belongs here"
+        alt="Children at the JOWIN Learning and Care Center"
+        caption="JOWIN Learning and Care Center, Usa River." />
     </div>
   </section>
 
-  <!-- STATEMENT / WHY -->
+  <!-- STATEMENT -->
   <section class="section section--sand">
     <div class="container split split--wide-text">
-      <p class="statement">Poverty keeps too many Tanzanian children out of the classroom. We are changing that.</p>
+      <p class="statement">Give a community more than hope — give it an <em>opportunity</em> to thrive.</p>
       <div>
-        <p class="kicker">Why we exist</p>
-        <p class="mb-0">{story}</p>
+        <p class="kicker">The real barrier</p>
+        <p class="mb-0">Across many rural communities, poverty is not caused by a lack of potential. It is often caused by a lack of access to basic means — education, healthcare, water, productive resources, markets and economic opportunities.</p>
       </div>
     </div>
   </section>
 
-  <!-- OUR SCHOOLS -->
+  <!-- WHY WE EXIST -->
+  <section class="section section--white">
+    <div class="container">
+      <p class="kicker">Why we exist</p>
+      <h2 style="max-width:24ch;">Education is the foundation that opens every other door</h2>
+      <div class="why measure">
+        {whyWeExist.map((p) => <p>{p}</p>)}
+      </div>
+      <p class="whycall">{whyWeExistCall}</p>
+    </div>
+  </section>
+
+  <!-- CENTERS -->
   <section class="section section--paper">
     <div class="container">
       <div class="split split--wide-text" style="align-items:end;">
         <div>
-          <p class="kicker">Our schools</p>
-          <h2 class="mb-0">Two schools, one mission</h2>
+          <p class="kicker">UCF Centers</p>
+          <h2 class="mb-0">Currently two centers, one mission</h2>
         </div>
-        <p class="mb-0" style="color:var(--muted);">From the first years of learning in Usa River to a growing school in the Maasai community of Simanjiro.</p>
+        <p class="mb-0" style="color:var(--muted);">A learning and care center in Usa River, and a learning and empowering center in the Maasai community of Simanjiro.</p>
       </div>
-
       <div class="grid grid--2 mt-2">
-        {schools.map((s) => (
-          <article class="school-card">
-            <Figure src={s.image} label={`A photo of ${s.name} belongs here`} alt={s.name}
-              variant={s.lead ? "" : "frame--sand"} />
-            <div class="school-card__body">
-              <p class="kicker" style="margin-bottom:0.6rem;">{s.tag}</p>
-              <h3>{s.name}</h3>
-              <p class="school-card__loc">{s.location}</p>
-              <p>{s.summary}</p>
-              <a href={`/schools/#${s.slug}`} class="arrow">Learn more <Fragment set:html={arrow} /></a>
+        {centers.map((c) => (
+          <article class="center-card">
+            <Figure src={c.image} label={`A photo of ${c.name}`} alt={c.name} variant={c.lead ? "" : "frame--sand"} />
+            <div>
+              <p class="kicker" style="margin-bottom:0.6rem;">{c.tag}</p>
+              <h3>{c.name}</h3>
+              <p class="center-card__loc">{c.location}</p>
+              <p>{c.summary}</p>
+              <a href={`/centers/#${c.slug}`} class="arrow">Learn more <Fragment set:html={arrow} /></a>
             </div>
           </article>
         ))}
@@ -64,7 +74,7 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
     </div>
   </section>
 
-  <!-- SIMANJIRO APPEAL -->
+  <!-- APPEAL -->
   <section class="section section--green">
     <div class="container">
       <p class="kicker">This year's goal</p>
@@ -73,70 +83,46 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
         <div>
           <p class="lead">{appeal.body}</p>
           <ul class="needs">
-            {appeal.items.map((it) => (
-              <li><strong>{it.label}</strong><span>{it.note}</span></li>
-            ))}
+            {appeal.items.map((it) => <li><strong>{it.label}</strong><span>{it.note}</span></li>)}
           </ul>
-          <a href="/get-involved/#donate" class="btn btn--solid mt-1">Support the Simanjiro school</a>
+          <a href="/get-involved/#donate" class="btn btn--solid mt-1">Support the Ugutu Center</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROGRAMS -->
+  <!-- SIX PILLARS -->
   <section class="section section--white">
     <div class="container">
-      <div class="split split--wide-text" style="align-items:end;">
-        <div>
-          <p class="kicker">What we do</p>
-          <h2 class="mb-0">Four ways we build futures</h2>
-        </div>
-        <p class="mb-0" style="color:var(--muted);">Drawn from the objectives at the heart of our foundation — education first, and the community around it.</p>
+      <div class="center">
+        <p class="kicker" style="justify-content:center;">Our integrated approach</p>
+        <h2>Six pillars, one community</h2>
+        <p class="lead mx-auto">Education leads — and opens the door to water, health, food, skills and income.</p>
       </div>
-      <div class="numlist">
-        {programs.map((p, i) => (
-          <article class="numitem">
-            <div class="numitem__no">{String(i + 1).padStart(2, "0")}</div>
-            <div class="numitem__body">
-              <h3>{p.title}</h3>
-              <p>{p.summary}</p>
-            </div>
+      <div class="pillars mt-2">
+        {pillars.map((p) => (
+          <article class="pillar">
+            <span class="pillar__icon">{p.icon}</span>
+            <h3>{p.title}</h3>
+            <p class="mb-0">{p.text}</p>
           </article>
         ))}
       </div>
-      <div class="mt-2"><a href="/our-work/" class="arrow">See our work in full <Fragment set:html={arrow} /></a></div>
-    </div>
-  </section>
-
-  <!-- WHO WE SERVE -->
-  <section class="section section--sand">
-    <div class="container split">
-      <Figure src={images.serve} label="A photograph from the field belongs here"
-        alt="A child supported by UGUTU Community Foundation" variant="frame--sand" />
-      <div>
-        <p class="kicker">The children we serve</p>
-        <h2>For the vulnerable, voiceless and underprivileged</h2>
-        <p>We work for the women, youth and children too often left behind — orphans and vulnerable children whose families cannot afford the cost of school, and girls at risk of leaving education far too early.</p>
-        <p>By keeping children learning and equipping their communities with real skills, we break the cycle that pushes them toward child labour, early marriage and drugs.</p>
-        <a href="/about/" class="arrow mt-1">More about UGUTU <Fragment set:html={arrow} /></a>
-      </div>
+      <div class="center mt-2"><a href="/our-work/" class="btn btn--green">Explore our work</a></div>
     </div>
   </section>
 
   <!-- GET INVOLVED -->
-  <section class="section section--white">
+  <section class="section section--sand">
     <div class="container">
-      <div class="split split--wide-text" style="align-items:end;">
-        <div>
-          <p class="kicker">Get involved</p>
-          <h2 class="mb-0">Stand with us</h2>
-        </div>
-        <p class="mb-0" style="color:var(--muted);">Give funds, give goods, give time, or grow with us — every kind of help reaches a child.</p>
+      <div class="center">
+        <p class="kicker" style="justify-content:center;">Get involved</p>
+        <h2>Choose how you want to make a difference</h2>
       </div>
-      <div class="features">
-        {involve.map((it, i) => (
+      <div class="features mt-2">
+        {involve.map((it) => (
           <article class="feature">
-            <div class="feature__no">{String(i + 1).padStart(2, "0")}</div>
+            <span class="feature__emoji">{it.icon}</span>
             <h3>{it.title}</h3>
             <p>{it.blurb}</p>
             <a href={it.href} class="arrow">{it.cta} <Fragment set:html={arrow} /></a>
@@ -149,8 +135,8 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
   <!-- CTA -->
   <section class="section section--green">
     <div class="container center">
-      <h2 style="max-width:18ch;margin-inline:auto;">Join hands with UGUTU Community Foundation</h2>
-      <p class="lead mx-auto" style="margin-bottom:2rem;">Every child deserves the chance to learn. Reach out to give, volunteer, or partner with us.</p>
+      <h2 style="max-width:20ch;margin-inline:auto;">Educate. Empower. Transform.</h2>
+      <p class="lead mx-auto" style="margin-bottom:2rem;">When you educate a person, you create the possibility of changing a family, a community, and generations to come.</p>
       <div class="actions" style="justify-content:center;">
         <a href="/get-involved/#donate" class="btn btn--solid">Donate now</a>
         <a href="/contact/" class="btn btn--ghost">Contact us</a>
@@ -163,14 +149,26 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
   .hero { padding-top: clamp(2rem, 1rem + 3vw, 4rem); }
   .hero h1 { margin-bottom: 0.5rem; }
 
-  .school-card { display: flex; flex-direction: column; gap: 1.1rem; }
-  .school-card__body { display: flex; flex-direction: column; }
-  .school-card__loc { color: var(--clay-ink); font-weight: 600; font-size: 0.9rem; margin: 0 0 0.6rem; }
-  .school-card .arrow { align-self: flex-start; margin-top: 0.3rem; }
+  .why p { margin-bottom: 1rem; }
+  .whycall { font-family: var(--font-display); font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); color: var(--clay-ink); margin-top: 1.5rem; font-style: italic; }
+
+  .center-card { display: flex; flex-direction: column; gap: 1.1rem; }
+  .center-card__loc { color: var(--clay-ink); font-weight: 600; font-size: 0.9rem; margin: 0 0 0.6rem; }
+  .center-card .arrow { align-self: flex-start; }
 
   .needs { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1rem; }
   .needs li { display: grid; gap: 0.15rem; padding-left: 1.1rem; position: relative; }
   .needs li::before { content: ""; position: absolute; left: 0; top: 0.6rem; width: 7px; height: 7px; background: var(--gold); border-radius: 50%; }
   .needs strong { color: #fffdf8; font-weight: 600; }
   .needs span { color: #b9cabf; font-size: 0.95rem; }
+
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  @media (max-width: 820px) { .pillars { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 1.5rem; }
+  .pillar__icon { font-size: 1.9rem; display: block; margin-bottom: 0.6rem; }
+  .pillar h3 { margin-bottom: 0.35rem; }
+  .pillar p { color: var(--body); font-size: 0.95rem; }
+
+  .feature__emoji { font-size: 1.8rem; display: block; margin-bottom: 0.7rem; }
 </style>

@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Figure from "../components/Figure.astro";
+import { centers } from "../data/site.js";
+const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+const ordered = [...centers].sort((a, b) => (b.lead ? 1 : 0) - (a.lead ? 1 : 0));
+---
+
+<BaseLayout title="UCF Centers" description="The learning centers of UGUTU Community Foundation — JOWIN Learning and Care Center in Usa River and the Ugutu Center in Simanjiro.">
+  <section class="section section--tight section--paper">
+    <div class="container">
+      <p class="kicker">UCF Centers</p>
+      <h1 style="max-width: 18ch;">Currently two centers, one mission</h1>
+      <p class="lead">A learning and care center in Usa River, and a learning and empowering center in the Maasai community of Simanjiro.</p>
+    </div>
+  </section>
+
+  {ordered.map((c, i) => (
+    <section class={`section ${i % 2 === 0 ? "section--white" : "section--sand"}`} id={c.slug}>
+      <div class={`container split ${i % 2 === 1 ? "split--reverse" : ""}`}>
+        <div>
+          <p class="kicker">{c.tag} · {c.location}</p>
+          <h2>{c.name}</h2>
+          <p class="lead" style="font-size:1.12rem;">{c.summary}</p>
+          <p>{c.body}</p>
+          {c.needs && c.needs.length > 0 && (
+            <div class="mt-1">
+              <p class="needs-title">What this learning center needs</p>
+              <div>{c.needs.map((n) => <span class="pill">{n}</span>)}</div>
+            </div>
+          )}
+          {c.lead && <a href="/get-involved/#donate" class="btn btn--solid mt-2">Support this center</a>}
+        </div>
+        <Figure src={c.image} label={`A photo of ${c.name} belongs here`} alt={c.name} variant={i % 2 === 1 ? "frame--sand" : ""} />
+      </div>
+    </section>
+  ))}
+
+  <section class="section section--green">
+    <div class="container center">
+      <h2 style="max-width:20ch;margin-inline:auto;">Help a child stay in learning</h2>
+      <p class="lead mx-auto" style="margin-bottom:2rem;">Sponsor a child, fund a classroom, or donate the basics that keep learning going.</p>
+      <div class="actions" style="justify-content:center;">
+        <a href="/get-involved/#donate" class="btn btn--solid">Donate now</a>
+        <a href="/get-involved/#volunteer" class="btn btn--ghost">Volunteer</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .needs-title { font-family: var(--font-text); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--clay-ink); margin-bottom: 0.7rem; }
+</style>

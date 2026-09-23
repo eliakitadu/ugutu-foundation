@@ -1,106 +1,129 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Figure from "../components/Figure.astro";
-import { org, bank, contacts, images } from "../data/site.js";
+import ContactForm from "../components/ContactForm.astro";
+import { involve, donationTiers, images } from "../data/site.js";
 const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 ---
 
-<BaseLayout title="Get Involved" description="Support UGUTU Community Foundation — donate funds or goods, volunteer, or partner with us.">
+<BaseLayout title="Get Involved" description="Support UGUTU Community Foundation — donate, volunteer, partner, or sponsor a project.">
   <section class="section section--tight section--paper">
     <div class="container">
-      <p class="kicker">Stand with us</p>
-      <h1 style="max-width: 20ch;">Get involved</h1>
-      <p class="lead">We need your support. There are several ways to join hands with UGUTU Community Foundation — give funds, give goods, give time, or partner with us.</p>
+      <p class="kicker">Join us</p>
+      <h1 style="max-width: 20ch;">Be part of building a better future</h1>
+      <p class="lead">Real change happens when people come together. Whether you want to support a child's education, help provide clean water, strengthen healthcare, or empower young people — there is a place for you in the UGUTU Community Foundation family.</p>
+    </div>
+  </section>
+
+  <!-- FIVE PATHS -->
+  <section class="section section--tight section--white">
+    <div class="container">
+      <div class="features">
+        {involve.map((it) => (
+          <article class="feature">
+            <span class="feature__emoji">{it.icon}</span>
+            <h3>{it.title}</h3>
+            <p class="feature__tag">{it.tagline}</p>
+            <p>{it.blurb}</p>
+            <a href={it.href} class="arrow">{it.cta} <Fragment set:html={arrow} /></a>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- DONATE -->
-  <section class="section section--white" id="donate">
-    <div class="container split">
-      <div>
-        <p class="kicker">01 — Give funds</p>
-        <h2>Donate</h2>
-        <p>Your gift goes straight into the things children need most — classrooms and dormitories at our Simanjiro school, and school places for orphans and vulnerable children who cannot afford them.</p>
-        <p>You can give by direct bank transfer to the foundation's account. To arrange mobile money or another way to give, just call us — we're happy to help.</p>
-        <div class="callus">
-          {contacts.map((c) => (
-            <a href={`tel:${c.tel}`} class="callus__item"><strong>{c.phone}</strong><span>{c.name}</span></a>
-          ))}
+  <section class="section section--sand" id="donate">
+    <div class="container">
+      <p class="kicker">💛 Donate</p>
+      <h2 style="max-width:22ch;">Give a gift that creates opportunity</h2>
+      <p class="lead measure">Your contribution helps turn community needs into lasting solutions — from a child's school place to clean water for an entire community. Choose an amount below, then send us a message and we'll share everything you need to give.</p>
+
+      <div class="tiers">
+        {donationTiers.map((t) => (
+          <article class="tier">
+            <div class="tier__amt">{t.amount} <span>{t.period}</span></div>
+            <p class="mb-0">{t.text}</p>
+            <a href="#donate-form" class="btn btn--green tier__btn">Give {t.amount}</a>
+          </article>
+        ))}
+      </div>
+      <p class="tiers-note">Amounts are examples — give whatever you can, monthly or one-off. Every contribution matters.</p>
+
+      <div class="split split--wide-text mt-2" id="donate-form" style="align-items:start;">
+        <div>
+          <h3>Ready to give?</h3>
+          <p>Send us a message and we'll reply with our giving details and answer any questions — including monthly giving, sponsoring a child, or supporting a specific project.</p>
         </div>
-      </div>
-
-      <div class="bankcard">
-        <p class="bankcard__head">Bank transfer · {bank.currency}</p>
-        <dl>
-          <dt>Account name</dt><dd>{bank.accountName}</dd>
-          <dt>Account number</dt><dd class="mono">{bank.accountNumber}</dd>
-          <dt>Bank</dt><dd>{bank.bankName}</dd>
-          <dt>Branch</dt><dd>{bank.branch}</dd>
-          <dt>SWIFT (international)</dt><dd class="mono">{bank.swift}</dd>
-        </dl>
-        <p class="bankcard__note">{bank.bankAddress}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- GIVE GOODS -->
-  <section class="section section--sand" id="goods">
-    <div class="container split split--reverse">
-      <Figure src={images.goods} label="A photograph of uniforms / supplies belongs here" alt="School supplies for children" variant="frame--sand" />
-      <div>
-        <p class="kicker">02 — Give goods</p>
-        <h2>Donate uniforms, stationery &amp; shoes</h2>
-        <p>Not every gift is money. School uniforms, stationery, shoes and learning materials are exactly the everyday basics that keep a child in class — and they make an immediate difference.</p>
-        <p>If you or your organisation can donate goods, we'll tell you what's needed most right now and how to get them to the children.</p>
-        <a href="/contact/" class="arrow mt-1">Donate goods <Fragment set:html={arrow} /></a>
+        <ContactForm subject="Donation enquiry" showInterest={true} />
       </div>
     </div>
   </section>
 
   <!-- VOLUNTEER -->
   <section class="section section--white" id="volunteer">
-    <div class="container split">
+    <div class="container split split--reverse">
+      <Figure src={images.volunteer} label="A photograph of volunteers belongs here" alt="Volunteers with UGUTU Community Foundation" />
       <div>
-        <p class="kicker">03 — Give time</p>
-        <h2>Volunteer</h2>
-        <p>Visitors are warmly welcome to give their time on the ground with us. Volunteers support teaching, mentoring, community outreach and the day-to-day life of our schools in Usa River and Simanjiro.</p>
-        <p>Membership is open to anyone aged 18 and above who is ready to support our vision, mission and objectives.</p>
+        <p class="kicker">🙌 Volunteer</p>
+        <h2>Give your time. Share your skills. Inspire change.</h2>
+        <p>Join us with your knowledge, experience, talents or time and become part of our work on the ground — teaching, mentoring, and supporting our learning centers in Usa River and Simanjiro.</p>
         <a href="/contact/" class="arrow mt-1">Become a volunteer <Fragment set:html={arrow} /></a>
       </div>
-      <Figure src={images.volunteer} label="A photograph of volunteers belongs here" alt="Volunteers with UGUTU Community Foundation" />
     </div>
   </section>
 
   <!-- PARTNER -->
   <section class="section section--sand" id="partner">
-    <div class="container split split--reverse">
-      <Figure src={images.partner} label="A photograph of a partnership belongs here" alt="A UGUTU partnership" variant="frame--sand" />
+    <div class="container split">
       <div>
-        <p class="kicker">04 — Grow with us</p>
-        <h2>Partner with us</h2>
-        <p>Organisations, schools, faith groups and companies can partner with UGUTU on grants, construction, sponsorship and long-term community projects — especially the development of our Simanjiro school. Together we can reach more children and families.</p>
+        <p class="kicker">🤝 Partner with us</p>
+        <h2>Let's build something that lasts</h2>
+        <p>Partner with us as a company, foundation, institution, organisation or individual to create sustainable community impact — through grants, projects, construction and long-term collaboration.</p>
         <a href="/contact/" class="arrow mt-1">Start a partnership <Fragment set:html={arrow} /></a>
+      </div>
+      <Figure src={images.partner} label="A photograph of a partnership belongs here" alt="A UGUTU partnership" variant="frame--sand" />
+    </div>
+  </section>
+
+  <!-- SPONSOR A PROJECT -->
+  <section class="section section--white" id="sponsor">
+    <div class="container split split--reverse">
+      <Figure src={images.goods} label="A project photograph belongs here" alt="A UGUTU project" />
+      <div>
+        <p class="kicker">🌱 Sponsor a project</p>
+        <h2>Choose a project. Create lasting impact.</h2>
+        <p>Support a specific initiative in education, water, healthcare, agriculture, livestock, youth development or economic empowerment — and see your gift build something that continues to create value for years.</p>
+        <a href="/contact/" class="arrow mt-1">Sponsor a project <Fragment set:html={arrow} /></a>
       </div>
     </div>
   </section>
 
+  <!-- EVERY CONTRIBUTION -->
   <section class="section section--green">
     <div class="container center">
-      <h2 style="max-width:16ch;margin-inline:auto;">Ready to help?</h2>
-      <p class="lead mx-auto" style="margin-bottom:2rem;">Write to us at <a href={`mailto:${org.email}`} style="color:var(--gold);border-bottom:1px solid var(--gold);">{org.email}</a> or use the contact form.</p>
-      <a href="/contact/" class="btn btn--solid">Contact us</a>
+      <p class="kicker" style="justify-content:center;">Every contribution matters</p>
+      <h2 style="max-width:24ch;margin-inline:auto;">You don't have to change the whole world</h2>
+      <p class="lead mx-auto">You can help change one classroom. One student's future. One family's livelihood. One community's opportunity. Together, those changes become something much bigger.</p>
+      <div class="actions mt-2" style="justify-content:center;">
+        <a href="#donate" class="btn btn--solid">Donate now</a>
+        <a href="/contact/" class="btn btn--ghost">Contact us</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .callus { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
-  .callus__item {
-    display: flex; flex-direction: column; line-height: 1.2;
-    padding: 0.7rem 1.1rem; border: 1px solid var(--line); border-radius: 6px;
-    background: var(--white); color: var(--ink); text-decoration: none;
-  }
-  .callus__item:hover { border-color: var(--clay); text-decoration: none; }
-  .callus__item strong { font-size: 1.05rem; }
-  .callus__item span { font-size: 0.82rem; color: var(--muted); margin-top: 0.15rem; }
+  .feature__emoji { font-size: 1.8rem; display: block; margin-bottom: 0.7rem; }
+  .feature__tag { color: var(--clay-ink); font-weight: 600; font-size: 0.9rem; }
+
+  .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+  @media (max-width: 820px) { .tiers { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 460px) { .tiers { grid-template-columns: 1fr; } }
+  .tier { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 1.4rem; display: flex; flex-direction: column; }
+  .tier__amt { font-family: var(--font-display); font-size: 1.8rem; color: var(--green); line-height: 1; margin-bottom: 0.6rem; }
+  .tier__amt span { font-family: var(--font-text); font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+  .tier p { color: var(--body); font-size: 0.95rem; }
+  .tier__btn { margin-top: auto; align-self: flex-start; }
+  .tiers-note { font-size: 0.88rem; color: var(--muted); margin-top: 1rem; font-style: italic; }
 </style>

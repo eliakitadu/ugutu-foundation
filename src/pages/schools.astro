@@ -1,55 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Figure from "../components/Figure.astro";
-import { schools } from "../data/site.js";
-const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
-// lead school first
-const ordered = [...schools].sort((a, b) => (b.lead ? 1 : 0) - (a.lead ? 1 : 0));
+// This page has moved to /centers/. Kept as a redirect so old links keep working.
 ---
-
-<BaseLayout title="Our Schools" description="The two schools run by UGUTU Community Foundation — JOWIN Daycare in Usa River and UGUTU Pre & Primary School in Simanjiro.">
-  <section class="section section--tight section--paper">
-    <div class="container">
-      <p class="kicker">Our schools</p>
-      <h1 style="max-width: 18ch;">Where learning happens</h1>
-      <p class="lead">UGUTU Community Foundation runs two schools — early years in Usa River, and a growing pre &amp; primary school in the Maasai community of Simanjiro.</p>
-    </div>
-  </section>
-
-  {ordered.map((s, i) => (
-    <section class={`section ${i % 2 === 0 ? "section--white" : "section--sand"}`} id={s.slug}>
-      <div class={`container split ${i % 2 === 1 ? "split--reverse" : ""}`}>
-        <div>
-          <p class="kicker">{s.tag} · {s.location}</p>
-          <h2>{s.name}</h2>
-          <p class="lead" style="font-size:1.12rem;">{s.summary}</p>
-          <p>{s.body}</p>
-          {s.needs && s.needs.length > 0 && (
-            <div class="mt-1">
-              <p class="needs-title">What this school needs</p>
-              <div>{s.needs.map((n) => <span class="pill">{n}</span>)}</div>
-            </div>
-          )}
-          {s.lead && <a href="/get-involved/#donate" class="btn btn--solid mt-2">Support this school</a>}
-        </div>
-        <Figure src={s.image} label={`A photo of ${s.name} belongs here`} alt={s.name}
-          variant={i % 2 === 1 ? "frame--sand" : ""} />
-      </div>
-    </section>
-  ))}
-
-  <section class="section section--green">
-    <div class="container center">
-      <h2 style="max-width:20ch;margin-inline:auto;">Help a child stay in school</h2>
-      <p class="lead mx-auto" style="margin-bottom:2rem;">Sponsor a child, fund a classroom, or donate the basics that keep learning going.</p>
-      <div class="actions" style="justify-content:center;">
-        <a href="/get-involved/#donate" class="btn btn--solid">Donate now</a>
-        <a href="/get-involved/#volunteer" class="btn btn--ghost">Volunteer</a>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .needs-title { font-family: var(--font-text); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--clay-ink); margin-bottom: 0.7rem; }
-</style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; url=/centers/" />
+    <link rel="canonical" href="/centers/" />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting to UCF Centers…</title>
+  </head>
+  <body>
+    <p>This page has moved. Redirecting to <a href="/centers/">UCF Centers</a>…</p>
+  </body>
+</html>
