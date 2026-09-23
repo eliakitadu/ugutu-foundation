@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Figure from "../components/Figure.astro";
+import Icon from "../components/Icon.astro";
 import { org, pillars, images } from "../data/site.js";
 ---
 
@@ -42,7 +43,7 @@ import { org, pillars, images } from "../data/site.js";
       <div class="pillar-grid mt-2">
         {pillars.map((p) => (
           <article class="pillar">
-            <span class="pillar__icon">{p.icon}</span>
+            <span class="icon-token"><Icon name={p.icon} /></span>
             <h3>{p.title}</h3>
             <p class="pillar__tag">{p.tag}</p>
             <p class="mb-0">{p.text}</p>

@@ -98,60 +98,60 @@ export const appeal = {
 
 // The Six Pillars (About page).
 export const pillars = [
-  { icon: "📚", title: "Education", tag: "Our First Priority", text: "Improving educational opportunities, learning environments, skills development, mentorship, scholarships and pathways for young people to achieve their potential." },
-  { icon: "💧", title: "Water", tag: "Supporting Learning and Life", text: "Developing reliable access to clean water for schools, families, healthcare, agriculture, livestock and productive community activities." },
-  { icon: "🏥", title: "Healthcare", tag: "Healthy People Learn and Thrive", text: "Supporting healthier families and communities through access to essential healthcare, sanitation, hygiene, nutrition and health education." },
-  { icon: "🌾", title: "Agriculture", tag: "Learning to Produce and Prosper", text: "Promoting knowledge, innovation, sustainable farming, food security, value addition and agricultural entrepreneurship." },
-  { icon: "🐄", title: "Livestock", tag: "Developing Skills and Household Assets", text: "Supporting livestock knowledge, animal health, sustainable production and opportunities for families to build productive assets." },
-  { icon: "💼", title: "Economic Empowerment", tag: "Turning Knowledge Into Opportunity", text: "Helping young people and families transform education and skills into entrepreneurship, employment, businesses, income and greater self-reliance." },
+  { icon: "book", title: "Education", tag: "Our First Priority", text: "Improving educational opportunities, learning environments, skills development, mentorship, scholarships and pathways for young people to achieve their potential." },
+  { icon: "water", title: "Water", tag: "Supporting Learning and Life", text: "Developing reliable access to clean water for schools, families, healthcare, agriculture, livestock and productive community activities." },
+  { icon: "health", title: "Healthcare", tag: "Healthy People Learn and Thrive", text: "Supporting healthier families and communities through access to essential healthcare, sanitation, hygiene, nutrition and health education." },
+  { icon: "sprout", title: "Agriculture", tag: "Learning to Produce and Prosper", text: "Promoting knowledge, innovation, sustainable farming, food security, value addition and agricultural entrepreneurship." },
+  { icon: "livestock", title: "Livestock", tag: "Developing Skills and Household Assets", text: "Supporting livestock knowledge, animal health, sustainable production and opportunities for families to build productive assets." },
+  { icon: "briefcase", title: "Economic Empowerment", tag: "Turning Knowledge Into Opportunity", text: "Helping young people and families transform education and skills into entrepreneurship, employment, businesses, income and greater self-reliance." },
 ];
 
 // Programs, projects & activities (Our Work page).
 export const programs = [
   {
-    slug: "education", icon: "📚", title: "Education & Skills Development", subtitle: "Our Core Program",
+    slug: "education", icon: "book", title: "Education & Skills Development", subtitle: "Our Core Program",
     intro: "Education is at the heart of UGUTU Community Foundation. We create opportunities for children and young people to access quality education, develop practical skills, discover their talents and prepare for meaningful participation in their communities and the economy.",
     activities: ["Supporting access to quality education", "School infrastructure and learning facilities", "Scholarships and educational support", "Books, learning materials and school supplies", "Digital and computer literacy", "Vocational and practical skills training", "Career guidance and mentorship", "Leadership and life-skills development", "Sports, arts, creativity and talent development", "Adult and community education", "Supporting teachers and educational institutions"],
     goal: "To help children and young people move from learning → skills → opportunity → independence.",
   },
   {
-    slug: "water", icon: "💧", title: "Water & Community Development", subtitle: "Water That Creates Opportunity",
+    slug: "water", icon: "water", title: "Water & Community Development", subtitle: "Water That Creates Opportunity",
     intro: "Reliable access to clean water is essential for education, health, agriculture, livestock and economic development. Our water initiatives develop sustainable water resources that serve schools, healthcare facilities, households and productive community activities.",
     activities: ["Community water projects", "Water supply infrastructure", "School and institutional water access", "Water storage facilities", "Water for agriculture and irrigation", "Livestock watering facilities", "Hygiene and sanitation education", "Community water management", "Productive and income-generating use of water"],
     goal: "To turn water resources into a foundation for health, education and economic opportunity.",
   },
   {
-    slug: "healthcare", icon: "🏥", title: "Healthcare & Wellbeing", subtitle: "Healthy People Learn, Work and Thrive",
+    slug: "healthcare", icon: "health", title: "Healthcare & Wellbeing", subtitle: "Healthy People Learn, Work and Thrive",
     intro: "A healthy community is better positioned to educate its children, develop its economy and build a sustainable future. We support initiatives that improve access to essential healthcare, health education, sanitation, hygiene and nutrition.",
     activities: ["Community health awareness", "Health and hygiene education", "School health initiatives", "Nutrition awareness", "Sanitation and hygiene projects", "Support for healthcare facilities", "Community health outreach", "Maternal and child health awareness", "Preventive health education"],
     goal: "To help create healthier families and communities where children can learn and adults can work and prosper.",
   },
   {
-    slug: "agriculture", icon: "🌾", title: "Agriculture & Food Security", subtitle: "From Knowledge to Production",
+    slug: "agriculture", icon: "sprout", title: "Agriculture & Food Security", subtitle: "From Knowledge to Production",
     intro: "We see agriculture not only as a source of food, but as a powerful platform for education, skills development, employment and economic empowerment. Our agricultural projects introduce practical knowledge and opportunities for farmers, young people and families.",
     activities: ["Demonstration farms", "Modern farming techniques", "Irrigation and water-efficient agriculture", "Crop production and horticulture", "Climate-smart agriculture", "Farmer training", "Youth agricultural programs", "Agricultural entrepreneurship", "Food processing and value addition", "Market-linkage initiatives"],
     goal: "To transform agriculture from a subsistence activity into a source of knowledge, food, skills, employment and sustainable income.",
   },
   {
-    slug: "livestock", icon: "🐄", title: "Livestock Development", subtitle: "Building Productive Households",
+    slug: "livestock", icon: "livestock", title: "Livestock Development", subtitle: "Building Productive Households",
     intro: "Livestock can provide food, income, assets and opportunities for rural families. Our livestock initiatives focus on improving knowledge, animal health, productivity and access to economic opportunities.",
     activities: ["Livestock husbandry training", "Animal health awareness", "Improved livestock management", "Breeding and productivity initiatives", "Poultry and small-livestock projects", "Youth livestock training", "Livestock feed and pasture development", "Value addition", "Market access", "Livestock-based entrepreneurship"],
     goal: "To help families and young people develop livestock into sustainable and productive livelihoods.",
   },
   {
-    slug: "economic", icon: "💼", title: "Economic Empowerment & Entrepreneurship", subtitle: "Turning Skills Into Opportunities",
+    slug: "economic", icon: "briefcase", title: "Economic Empowerment & Entrepreneurship", subtitle: "Turning Skills Into Opportunities",
     intro: "Education becomes even more powerful when people can use what they have learned to create livelihoods. We support young people, women and families to develop practical economic skills and build sustainable income-generating activities.",
     activities: ["Entrepreneurship training", "Vocational skills", "Small-business development", "Youth enterprise initiatives", "Women's economic empowerment", "Financial literacy", "Savings and community enterprise groups", "Business mentorship", "Market access and value addition", "Employment and income-generating projects"],
     goal: "To help people move from knowledge to skills, skills to opportunity, and opportunity to sustainable income.",
   },
   {
-    slug: "youth", icon: "🌱", title: "Youth Development & Leadership", subtitle: "Preparing the Next Generation",
+    slug: "youth", icon: "cap", title: "Youth Development & Leadership", subtitle: "Preparing the Next Generation",
     intro: "Young people are not only beneficiaries of development — they are future leaders, entrepreneurs, professionals, farmers, innovators and community builders. Our youth programs equip them with knowledge, confidence, practical skills and opportunities.",
     activities: ["Leadership development", "Mentorship", "Career guidance", "Entrepreneurship", "Vocational skills", "Digital literacy", "Sports and talent development", "Environmental awareness", "Community service", "Innovation and creativity"],
     goal: "To raise a generation that is educated, skilled, confident, responsible and capable of creating opportunities for others.",
   },
   {
-    slug: "community", icon: "🌍", title: "Community Development & Partnerships", subtitle: "Development Through Collaboration",
+    slug: "community", icon: "globe", title: "Community Development & Partnerships", subtitle: "Development Through Collaboration",
     intro: "Lasting change requires collaboration. We bring together communities, local leaders, educational and government institutions, businesses, donors, foundations, volunteers and development partners around practical community priorities.",
     activities: ["Community consultations", "Participatory project planning", "Capacity building", "Community infrastructure", "Partnerships and resource mobilization", "Volunteer programs", "Community awareness campaigns", "Monitoring and evaluation", "Knowledge sharing"],
     goal: "To ensure communities participate in shaping, implementing and sustaining the solutions that affect their future.",
@@ -163,11 +163,11 @@ export const cycle = ["Education", "Skills", "Opportunity", "Income", "Empowerme
 
 // Ways to help (Get Involved + homepage).
 export const involve = [
-  { icon: "💛", title: "Donate", tagline: "Give a gift that creates opportunity", blurb: "Your contribution helps turn community needs into lasting solutions.", cta: "Donate", href: "/get-involved/#donate" },
-  { icon: "🙌", title: "Volunteer", tagline: "Give your time. Share your skills.", blurb: "Join us with your knowledge, experience, talents or time and become part of our work on the ground.", cta: "Volunteer", href: "/get-involved/#volunteer" },
-  { icon: "🤝", title: "Partner With Us", tagline: "Let's build something that lasts", blurb: "Partner with us as a company, foundation, institution, organisation or individual to create sustainable community impact.", cta: "Partner with us", href: "/get-involved/#partner" },
-  { icon: "🌱", title: "Sponsor a Project", tagline: "Choose a project. Create lasting impact.", blurb: "Support a specific initiative in education, water, healthcare, agriculture, livestock, youth development or economic empowerment.", cta: "Sponsor a project", href: "/get-involved/#sponsor" },
-  { icon: "📩", title: "Contact Us", tagline: "Let's start a conversation", blurb: "Have an idea, want to collaborate, or would like to learn more about our work? We'd love to hear from you.", cta: "Contact us", href: "/contact/" },
+  { icon: "heart", title: "Donate", tagline: "Give a gift that creates opportunity", blurb: "Your contribution helps turn community needs into lasting solutions.", cta: "Donate", href: "/get-involved/#donate" },
+  { icon: "hands", title: "Volunteer", tagline: "Give your time. Share your skills.", blurb: "Join us with your knowledge, experience, talents or time and become part of our work on the ground.", cta: "Volunteer", href: "/get-involved/#volunteer" },
+  { icon: "users", title: "Partner With Us", tagline: "Let's build something that lasts", blurb: "Partner with us as a company, foundation, institution, organisation or individual to create sustainable community impact.", cta: "Partner with us", href: "/get-involved/#partner" },
+  { icon: "sprout", title: "Sponsor a Project", tagline: "Choose a project. Create lasting impact.", blurb: "Support a specific initiative in education, water, healthcare, agriculture, livestock, youth development or economic empowerment.", cta: "Sponsor a project", href: "/get-involved/#sponsor" },
+  { icon: "mail", title: "Contact Us", tagline: "Let's start a conversation", blurb: "Have an idea, want to collaborate, or would like to learn more about our work? We'd love to hear from you.", cta: "Contact us", href: "/contact/" },
 ];
 
 // Donation tiers — EXAMPLE amounts (USD). Edit freely; add TZS if you like.

@@ -303,6 +303,29 @@ header, main, footer { position: relative; z-index: 2; }
   .bankcard dd { text-align: left; margin-bottom: 0.6rem; }
 }
 
+/* ---------- Icon token ---------- */
+.icon-token {
+  display: inline-grid; place-items: center;
+  width: 54px; height: 54px;
+  border-radius: 14px;
+  background: rgba(30, 77, 58, 0.09);
+  color: var(--green);
+  margin-bottom: 0.9rem;
+}
+.icon-token--lg { width: 60px; height: 60px; border-radius: 16px; }
+.icon-token--clay { background: rgba(184, 83, 47, 0.1); color: var(--clay-ink); }
+
+/* card hover polish (applies across pages) */
+.pillar, .tier, .center-card, .feature { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.pillar:hover, .tier:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+
+/* ---------- Reveal on scroll ---------- */
+.reveal-init .section > .container { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal-init .section > .container.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init .section > .container { opacity: 1 !important; transform: none !important; transition: none; }
+}
+
 /* ---------- Misc ---------- */
 .pill { display: inline-block; border: 1px solid var(--line); color: var(--green); padding: 0.35rem 0.85rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; margin: 0 0.4rem 0.5rem 0; background: var(--white); }
 .rule { border: none; border-top: 1px solid var(--line); margin: 0; }

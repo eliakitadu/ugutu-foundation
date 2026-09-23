@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Figure from "../components/Figure.astro";
+import Icon from "../components/Icon.astro";
 import { org, pillars, involve, whyWeExist, whyWeExistCall, centers, appeal, images } from "../data/site.js";
 const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 ---
@@ -102,7 +103,7 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
       <div class="pillars mt-2">
         {pillars.map((p) => (
           <article class="pillar">
-            <span class="pillar__icon">{p.icon}</span>
+            <span class="icon-token"><Icon name={p.icon} /></span>
             <h3>{p.title}</h3>
             <p class="mb-0">{p.text}</p>
           </article>
@@ -122,7 +123,7 @@ const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
       <div class="features mt-2">
         {involve.map((it) => (
           <article class="feature">
-            <span class="feature__emoji">{it.icon}</span>
+            <span class="icon-token"><Icon name={it.icon} /></span>
             <h3>{it.title}</h3>
             <p>{it.blurb}</p>
             <a href={it.href} class="arrow">{it.cta} <Fragment set:html={arrow} /></a>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
 import { programs, cycle } from "../data/site.js";
 ---
 
@@ -16,7 +17,7 @@ import { programs, cycle } from "../data/site.js";
     <section class={`section ${i % 2 === 0 ? "section--white" : "section--sand"}`} id={p.slug}>
       <div class="container">
         <div class="prog-head">
-          <span class="prog-icon">{p.icon}</span>
+          <span class="icon-token icon-token--lg prog-icon"><Icon name={p.icon} size={28} /></span>
           <div>
             <p class="prog-num">Program {String(i + 1).padStart(2, "0")}</p>
             <h2>{p.title}</h2>
