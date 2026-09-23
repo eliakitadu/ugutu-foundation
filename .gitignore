@@ -19,3 +19,5 @@ public/images/*.jpeg
 public/images/*.png
 # raw phone exports (optimised clean-named copies are committed instead)
 public/images/web/gallery/PXL_*
+public/images/web/gallery/WhatsApp*
+public/images/web/gallery/_review/

@@ -35,7 +35,7 @@ export const scope = "UGUTU Community Foundation works across Tanzania for the s
 export const images = {
   hero: "/images/web/gallery/IMG_8212.jpg",   // children at the JOWIN signboard, Usa River
   story: "/images/web/story.jpg",
-  serve: "/images/web/gallery/IMG_1143.jpg",
+  serve: "/images/web/gallery/reading.jpg",
   funding: "/images/web/community.jpg",
   volunteer: "/images/web/volunteer.jpg",
   goods: "/images/web/gallery/IMG_2333.jpg",
@@ -63,10 +63,10 @@ export const centers = [
     location: "Simanjiro, Manyara Region",
     tag: "Our focus this year",
     lead: true,
-    image: "/images/web/gallery/simanjiro-school.jpg",
+    image: "/images/web/gallery/ugutu-building.jpg",
     summary: "A learning and empowering center in the Maasai community of Simanjiro — a learning center and agricultural project, and one of UCF's main focuses this year.",
     body: "At Simanjiro, Ugutu Learning Center has the opportunity to grow, in a community that is in need of education for its children. This center has been established with the great support of Worldserve International and its donors, Tom Lawrence and family, to whom we are deeply grateful and humbled. From here we are building classrooms, boarding and an agricultural project so more children can learn close to home and families can grow more self-reliant.",
-    needs: ["Classrooms", "Dormitories", "Child sponsorship", "Uniforms, shoes & learning materials"],
+    needs: ["Classrooms", "Dormitories", "A fully-equipped kitchen & dining hall", "Office equipment", "Child sponsorship", "Uniforms, shoes & learning materials"],
   },
   {
     slug: "jowin-center",
@@ -77,7 +77,7 @@ export const centers = [
     image: "/images/web/jowin.jpg",
     summary: "Our daycare center in Usa River, where the youngest children begin their learning experience.",
     body: "At JOWIN Learning and Care Center in Usa River, our youngest children take their very first steps into education — early, foundational learning in a safe and caring place — while we work to find sponsors so vulnerable children can continue their schooling.",
-    needs: ["Child sponsorship", "Uniforms", "Shoes", "Learning materials"],
+    needs: ["Child sponsorship", "Uniforms", "Shoes", "Learning materials", "Office equipment"],
   },
 ];
 
@@ -88,6 +88,7 @@ export const appeal = {
   items: [
     { label: "Classrooms", note: "Safe, permanent rooms so more children can learn." },
     { label: "Dormitories", note: "Boarding so children from far away can stay in school." },
+    { label: "Kitchen & dining hall", note: "A place to cook and share nourishing meals so children can focus on learning." },
     { label: "Child sponsorship", note: "Covering fees for children whose families cannot." },
     { label: "Uniforms, shoes & materials", note: "The everyday basics that keep a child in class." },
   ],
@@ -198,19 +199,25 @@ export const objectives = [
 // Gallery images (curated).
 const G = "/images/web/gallery";
 export const gallery = [
+  { src: `${G}/ugutu-building.jpg`, alt: "The new Ugutu Center classroom block in Simanjiro", caption: "The new Ugutu Center, Simanjiro" },
   { src: `${G}/IMG_8212.jpg`, alt: "Children outside the JOWIN Daycare signboard", caption: "JOWIN Learning & Care Center, Usa River" },
+  { src: `${G}/class-1.jpg`, alt: "Children learning at colourful tables in Simanjiro", caption: "In class at Simanjiro" },
+  { src: `${G}/reading.jpg`, alt: "Children reading a book together", caption: "Reading together" },
+  { src: `${G}/ugutu-construction.jpg`, alt: "Classroom walls under construction in Simanjiro", caption: "Building the classrooms" },
   { src: `${G}/IMG_0899.jpg`, alt: "Two smiling pupils with a volunteer", caption: "Joy in every day" },
-  { src: `${G}/simanjiro-school.jpg`, alt: "The Ugutu Center building in Simanjiro", caption: "Our center in Simanjiro" },
-  { src: `${G}/simanjiro-classroom.jpg`, alt: "A bright classroom at the Ugutu Center", caption: "Inside the Simanjiro classroom" },
-  { src: `${G}/simanjiro-class-window.jpg`, alt: "Children learning at the Ugutu Center", caption: "A day in class, Simanjiro" },
-  { src: `${G}/simanjiro-reading.jpg`, alt: "Children reading together in Simanjiro", caption: "Reading together" },
-  { src: `${G}/simanjiro-kids.jpg`, alt: "Two pupils at the Ugutu Center", caption: "Simanjiro pupils" },
+  { src: `${G}/child-1.jpg`, alt: "A child carrying a sack on their head", caption: "On the way home" },
+  { src: `${G}/class-2.jpg`, alt: "A teacher leading a lesson at the chalkboard", caption: "A lesson in progress" },
+  { src: `${G}/kids-outside.jpg`, alt: "Children outside the Simanjiro center", caption: "Outside the center" },
+  { src: `${G}/ugutu-site.jpg`, alt: "The Ugutu Center building in the Simanjiro landscape", caption: "Our growing center" },
+  { src: `${G}/break.jpg`, alt: "Children on a break at the center", caption: "A break at the center" },
+  { src: `${G}/child-2.jpg`, alt: "A pupil in Simanjiro", caption: "A pupil in Simanjiro" },
+  { src: `${G}/class-3.jpg`, alt: "A full classroom of children", caption: "A full classroom" },
+  { src: `${G}/football.jpg`, alt: "A boy playing with a football", caption: "Time to play" },
+  { src: `${G}/ugutu-walls.jpg`, alt: "Classroom walls going up in Simanjiro", caption: "The walls go up" },
   { src: `${G}/simanjiro-meal.jpg`, alt: "Children sharing a meal at the center", caption: "A warm meal at the center" },
-  { src: `${G}/20260114_091049.jpg`, alt: "Pupils in blue uniform at the chalkboard", caption: "Ready to learn" },
-  { src: `${G}/IMG_1141.jpg`, alt: "Children learning with tablets in class", caption: "Learning with tablets" },
+  { src: `${G}/ugutu-foundation.jpg`, alt: "Foundations laid for the Simanjiro center", caption: "Laying the foundations" },
   { src: `${G}/IMG_2333.jpg`, alt: "Donated uniforms, shoes and stationery", caption: "Uniforms, shoes & supplies" },
   { src: `${G}/IMG_2345.jpg`, alt: "New backpacks for pupils", caption: "New backpacks" },
-  { src: `${G}/IMG_8533.jpg`, alt: "A joyful moment with a pupil", caption: "Smiles all round" },
   { src: "/images/web/community.jpg", alt: "Volunteers and children together", caption: "Together" },
 ];
 
