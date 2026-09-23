@@ -1,6 +1,6 @@
 ---
 import { org } from "../data/site.js";
-const { subject = "Website enquiry", amounts = null, messageRequired = true } = Astro.props;
+const { subject = "Website enquiry", amounts = null, select = null, messageRequired = true } = Astro.props;
 const isDonation = Array.isArray(amounts) && amounts.length > 0;
 ---
 
@@ -30,6 +30,14 @@ const isDonation = Array.isArray(amounts) && amounts.length > 0;
           </label>
         </div>
         <input type="text" name="amount_custom" class="amt-custom" placeholder="Enter an amount (e.g. $50 / month)" hidden />
+      </div>
+    )}
+    {select && (
+      <div class="field">
+        <label for="cf-select">{select.label}</label>
+        <select id="cf-select" name={select.name}>
+          {select.options.map((o) => <option>{o}</option>)}
+        </select>
       </div>
     )}
     <div class="field"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" required /></div>

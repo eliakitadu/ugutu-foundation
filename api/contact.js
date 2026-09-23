@@ -32,6 +32,7 @@ export default async function handler(req, res) {
     const email = clean(data.email);
     const message = clean(data.message);
     const interest = clean(data.interest);
+    const project = clean(data.project);
     const amountSel = clean(data.amount);
     const amountCustom = clean(data.amount_custom);
     const amount = amountSel === "Custom" ? amountCustom || "Custom amount (unspecified)" : amountSel;
@@ -54,7 +55,8 @@ export default async function handler(req, res) {
       `Name:  ${name}`,
       `Email: ${email}`,
       amount ? `Amount / gift: ${amount}` : null,
-      interest ? `Interest: ${interest}` : null,
+      project ? `Project / area: ${project}` : null,
+      interest ? `How they'd like to help: ${interest}` : null,
       "",
       message || "(no message)",
       "",

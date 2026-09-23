@@ -64,14 +64,17 @@ const amountOptions = donationTiers.map((t) => `${t.amount} ${t.period}`);
 
   <!-- VOLUNTEER -->
   <section class="section section--white" id="volunteer">
-    <div class="container split split--reverse">
-      <Figure src={images.volunteer} label="A photograph of volunteers belongs here" alt="Volunteers with UGUTU Community Foundation" />
+    <div class="container split split--wide-text" style="align-items:start;">
       <div>
         <p class="kicker">Volunteer</p>
         <h2>Give your time. Share your skills. Inspire change.</h2>
         <p>Join us with your knowledge, experience, talents or time and become part of our work on the ground — teaching, mentoring, and supporting our learning centers in Usa River and Simanjiro.</p>
-        <a href="/contact/" class="arrow mt-1">Become a volunteer <Fragment set:html={arrow} /></a>
+        <p>Tell us a little about yourself and how you'd like to help, and we'll be in touch.</p>
       </div>
+      <ContactForm
+        subject="Volunteer enquiry"
+        select={{ label: "How would you like to help?", name: "interest", options: ["Teaching & mentoring", "On-the-ground support at our centers", "Skills / professional support", "Fundraising & awareness", "Other"] }}
+      />
     </div>
   </section>
 
@@ -90,14 +93,18 @@ const amountOptions = donationTiers.map((t) => `${t.amount} ${t.period}`);
 
   <!-- SPONSOR A PROJECT -->
   <section class="section section--white" id="sponsor">
-    <div class="container split split--reverse">
-      <Figure src={images.goods} label="A project photograph belongs here" alt="A UGUTU project" />
+    <div class="container split split--wide-text" style="align-items:start;">
       <div>
         <p class="kicker">Sponsor a project</p>
         <h2>Choose a project. Create lasting impact.</h2>
         <p>Support a specific initiative in education, water, healthcare, agriculture, livestock, youth development or economic empowerment — and see your gift build something that continues to create value for years.</p>
-        <a href="/contact/" class="arrow mt-1">Sponsor a project <Fragment set:html={arrow} /></a>
+        <p>Pick an area below and send us a note — we'll share the current projects and what your support can achieve.</p>
       </div>
+      <ContactForm
+        subject="Project sponsorship enquiry"
+        select={{ label: "Which area would you like to support?", name: "project", options: ["Education", "Clean water", "Healthcare", "Agriculture", "Livestock", "Economic empowerment", "Youth development", "Where the need is greatest"] }}
+        messageRequired={false}
+      />
     </div>
   </section>
 
