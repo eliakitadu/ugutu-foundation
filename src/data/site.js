@@ -63,7 +63,7 @@ export const centers = [
     location: "Simanjiro, Manyara Region",
     tag: "Our focus this year",
     lead: true,
-    image: "/images/web/gallery/ugutu-building.jpg",
+    image: "/images/web/gallery/ugutu-children.jpg",
     summary: "A learning and empowering center in the Maasai community of Simanjiro — a learning center and agricultural project, and one of UCF's main focuses this year.",
     body: "At Simanjiro, Ugutu Learning Center has the opportunity to grow, in a community that is in need of education for its children. This center has been established with the great support of Worldserve International and its donors, Tom Lawrence and family, to whom we are deeply grateful and humbled. From here we are building classrooms, boarding and an agricultural project so more children can learn close to home and families can grow more self-reliant.",
     needs: ["Classrooms", "Dormitories", "A fully-equipped kitchen & dining hall", "Office equipment", "Child sponsorship", "Uniforms, shoes & learning materials"],
