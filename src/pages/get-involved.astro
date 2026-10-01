@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Figure from "../components/Figure.astro";
 import ContactForm from "../components/ContactForm.astro";
 import Icon from "../components/Icon.astro";
-import { involve, donationTiers, images } from "../data/site.js";
+import { involve, donationTiers, images, org } from "../data/site.js";
 const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const amountOptions = donationTiers.map((t) => `${t.amount} ${t.period}`);
 ---
@@ -39,7 +39,21 @@ const amountOptions = donationTiers.map((t) => `${t.amount} ${t.period}`);
     <div class="container">
       <p class="kicker">Donate</p>
       <h2 style="max-width:22ch;">Give a gift that creates opportunity</h2>
-      <p class="lead measure">Your contribution helps turn community needs into lasting solutions — from a child's school place to clean water for an entire community. Choose an amount below, then send us a message and we'll share everything you need to give.</p>
+      <p class="lead measure">Your contribution helps turn community needs into lasting solutions — from a child's school place to clean water for an entire community. Give securely online with PayPal, or choose an amount below and send us a message.</p>
+
+      <!-- PAYPAL -->
+      <div class="paypal">
+        <div class="paypal__text">
+          <p class="kicker">Give online</p>
+          <h3>Donate securely with PayPal</h3>
+          <p>Make a one-off or recurring gift in seconds — using your PayPal balance or any debit or credit card, no account required. Scan the code with your phone camera, or tap the button.</p>
+          <a href={org.paypal} class="btn btn--green" target="_blank" rel="noopener noreferrer">Donate with PayPal</a>
+        </div>
+        <figure class="paypal__qr">
+          <img src={org.paypalQr} width="220" height="220" alt="QR code linking to the UGUTU Community Foundation PayPal donation page" loading="lazy" />
+          <figcaption>Scan to donate</figcaption>
+        </figure>
+      </div>
 
       <div class="tiers">
         {donationTiers.map((t) => (
@@ -125,6 +139,22 @@ const amountOptions = donationTiers.map((t) => `${t.amount} ${t.period}`);
 <style>
   .feature__emoji { font-size: 1.8rem; display: block; margin-bottom: 0.7rem; }
   .feature__tag { color: var(--clay-ink); font-weight: 600; font-size: 0.9rem; }
+
+  .paypal {
+    display: grid; grid-template-columns: 1fr auto; gap: clamp(1.5rem, 1rem + 3vw, 3rem); align-items: center;
+    background: var(--white); border: 1px solid var(--line); border-radius: 12px;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem); margin-top: 2rem;
+  }
+  .paypal h3 { margin: 0.2rem 0 0.6rem; }
+  .paypal__text p { color: var(--body); max-width: 46ch; }
+  .paypal__text .btn { margin-top: 0.4rem; }
+  .paypal__qr { margin: 0; text-align: center; }
+  .paypal__qr img { display: block; width: 200px; height: 200px; border: 1px solid var(--line); border-radius: 10px; padding: 0.5rem; background: #fff; }
+  .paypal__qr figcaption { font-size: 0.82rem; color: var(--muted); margin-top: 0.5rem; font-weight: 600; letter-spacing: 0.02em; }
+  @media (max-width: 640px) {
+    .paypal { grid-template-columns: 1fr; justify-items: start; }
+    .paypal__qr { justify-self: center; }
+  }
 
   .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
   @media (max-width: 820px) { .tiers { grid-template-columns: 1fr 1fr; } }

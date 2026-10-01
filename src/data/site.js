@@ -13,6 +13,8 @@ export const org = {
   vision: "Helping deprived Tanzanian children realise their full potential through education.",
   mission: "Providing quality services to the community through quality education.",
   email: "info@ugutucommunityfoundation.org",
+  paypal: "https://www.paypal.com/ncp/payment/UP27DZHEYLWJC",
+  paypalQr: "/images/web/paypal-qr.png",
   address: {
     street: "Mji Mwema Street, near Unambwe Secondary School",
     ward: "Usa River Ward, Arumeru District",
