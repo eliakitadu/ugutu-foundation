@@ -7,6 +7,9 @@ const isDonation = Array.isArray(amounts) && amounts.length > 0;
 <form class="cform" action="/api/contact" method="POST" data-cform>
   <input type="hidden" name="subject" value={subject} />
   <input type="text" name="_gotcha" class="cform__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <input type="text" name="website" class="cform__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <input type="hidden" name="t" data-token value="" />
+  <input type="hidden" name="dt" data-elapsed value="" />
   <div class="cform__status cform__status--ok" data-cform-success hidden>
     <strong>Thank you!</strong> Your message has been sent — we'll be in touch soon with everything you need.
   </div>
@@ -88,6 +91,7 @@ const isDonation = Array.isArray(amounts) && amounts.length > 0;
     const fields = form.querySelector(".cform__fields");
     const custom = form.querySelector(".amt-custom");
     const amountRadios = form.querySelectorAll('input[name="amount"]');
+    const loadedAt = Date.now(); // used for the time-trap below
 
     // reveal the custom amount box only when "Other" is chosen
     const syncCustom = () => {
@@ -102,6 +106,11 @@ const isDonation = Array.isArray(amounts) && amounts.length > 0;
       const label = btn ? btn.textContent : "";
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
       if (err) err.hidden = true;
+      // stamp proof-of-browser token + elapsed time (anti-bot — invisible to people)
+      const tEl = form.querySelector("[data-token]");
+      if (tEl) tEl.value = btoa("ugutu|" + Date.now());
+      const dtEl = form.querySelector("[data-elapsed]");
+      if (dtEl) dtEl.value = String(Date.now() - loadedAt);
       const payload = Object.fromEntries(new FormData(form).entries());
       try {
         const res = await fetch(form.action, {

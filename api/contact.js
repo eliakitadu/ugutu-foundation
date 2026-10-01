@@ -38,10 +38,39 @@ export default async function handler(req, res) {
     const amount = amountSel === "Custom" ? amountCustom || "Custom amount (unspecified)" : amountSel;
     const subject = clean(data.subject) || "Website enquiry";
 
-    // honeypot — bots fill hidden fields; humans don't
-    if (clean(data._gotcha)) return done(200, { ok: true });
+    // ---- anti-bot layers ----------------------------------------------------
+    // All checks below silently return {ok:true} (no email sent) so bots believe
+    // they succeeded and don't adapt. Real visitors never trip these.
 
-    if (!name || !email || !message) return done(400, { ok: false, error: "Please fill in your name, email and message." });
+    // 1. Honeypots — hidden fields humans never see; bots fill them.
+    if (clean(data._gotcha) || clean(data.website)) return done(200, { ok: true });
+
+    // 2. Proof the page's JavaScript actually ran. Bots that POST straight to
+    //    this endpoint have no valid token. Token = base64("ugutu|<timestamp>").
+    let humanOk = false;
+    try {
+      const decoded = Buffer.from(clean(data.t), "base64").toString("utf8");
+      if (decoded.startsWith("ugutu|")) {
+        const ts = Number(decoded.slice(6));
+        const now = Date.now();
+        if (ts && ts <= now + 5 * 60 * 1000 && ts >= now - 2 * 60 * 60 * 1000) humanOk = true;
+      }
+    } catch (_) {}
+    if (!humanOk) return done(200, { ok: true });
+
+    // 3. Time-trap — a genuine person can't fill the form in under 3 seconds.
+    const dt = Number(clean(data.dt));
+    if (!dt || dt < 3000) return done(200, { ok: true });
+
+    // 4. Link-spam filter — a name with a URL, or a message stuffed with links.
+    const linkCount = (message.match(/https?:\/\/|www\./gi) || []).length;
+    if (/https?:\/\/|www\./i.test(name) || linkCount >= 4) return done(200, { ok: true });
+    // -------------------------------------------------------------------------
+
+    // Require enough real content: name + email, and at least a message, amount,
+    // interest or project (so donation enquiries without a message still work).
+    if (!name || !email) return done(400, { ok: false, error: "Please fill in your name and email." });
+    if (!message && !amount && !interest && !project) return done(400, { ok: false, error: "Please add a short message." });
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || "smtp.zoho.com",
