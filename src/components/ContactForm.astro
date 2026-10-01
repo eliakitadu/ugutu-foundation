@@ -47,6 +47,7 @@ const isDonation = Array.isArray(amounts) && amounts.length > 0;
       <textarea id="cf-msg" name="message" rows="5" required={messageRequired && !isDonation}></textarea>
     </div>
     <button type="submit" class="btn btn--solid">{isDonation ? "Send my donation enquiry" : "Send message"}</button>
+    <p class="cform__privacy">We use the details you share only to reply to you. We never sell or pass them on. <a href="/privacy/">Privacy note</a>.</p>
   </div>
 </form>
 
@@ -76,6 +77,8 @@ const isDonation = Array.isArray(amounts) && amounts.length > 0;
   .cform__status { padding: 1rem 1.1rem; border-radius: 6px; margin-bottom: 0.25rem; }
   .cform__status--ok { background: rgba(30,77,58,0.08); border: 1px solid var(--green); color: var(--ink); }
   .cform__status--err { background: rgba(184,83,47,0.08); border: 1px solid var(--clay); color: var(--ink); }
+  .cform__privacy { margin: 0.9rem 0 0; font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+  .cform__privacy a { color: var(--green); font-weight: 600; }
 </style>
 
 <script>

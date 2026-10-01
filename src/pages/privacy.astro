@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { org } from "../data/site.js";
+const updated = "October 2026";
+---
+
+<BaseLayout title="Privacy" description="How UGUTU Community Foundation handles the information you share with us.">
+  <section class="section section--tight section--paper">
+    <div class="container">
+      <p class="kicker">Privacy</p>
+      <h1 style="max-width:20ch;">How we handle your information</h1>
+      <p class="lead measure">We keep this simple. We only ask for what we need to reply to you, and we treat it with care.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container measure prose">
+      <h2>What we collect</h2>
+      <p>When you use a form on this site — contact, donation enquiry, volunteer, or sponsorship — we receive the details you choose to enter, such as your name, email address, the amount or area you're interested in, and your message. We don't collect anything else about you.</p>
+
+      <h2>Why we collect it</h2>
+      <p>We use your details for one purpose: to respond to you and follow up on your enquiry. That's it.</p>
+
+      <h2>How it's handled</h2>
+      <p>Form submissions are sent straight to our organisation inbox at <a href={`mailto:${org.email}`}>{org.email}</a>. We do not sell, rent, or share your information with anyone outside UGUTU Community Foundation, and we keep it only as long as we need it to help you.</p>
+
+      <h2>Donations through PayPal</h2>
+      <p>When you donate using the PayPal button or QR code, the payment is handled entirely by PayPal on their own secure pages. We never see or store your card or bank details — PayPal only tells us that a gift was received.</p>
+
+      <h2>Cookies and tracking</h2>
+      <p>This is a simple static website. We don't use advertising cookies or track you across the web.</p>
+
+      <h2>Your choices</h2>
+      <p>You can ask us at any time to see what information we hold about you, or to delete it. Just email <a href={`mailto:${org.email}`}>{org.email}</a> and we'll take care of it.</p>
+
+      <h2>Questions</h2>
+      <p>If anything here is unclear, please get in touch — we're happy to explain.</p>
+
+      <p class="updated">Last updated: {updated}</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; }
+  .prose h2:first-child { margin-top: 0; }
+  .prose p { margin: 0 0 0.5rem; color: var(--body); }
+  .prose a { color: var(--green); font-weight: 600; }
+  .updated { margin-top: 2.5rem !important; font-size: 0.85rem; color: var(--muted); font-style: italic; }
+</style>
